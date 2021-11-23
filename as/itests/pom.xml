@@ -220,7 +220,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 									<goal>wget</goal>
 								</goals>
 								<configuration>
-									<url>https://download.jboss.org/wildfly/25.0.0.Final/wildfly-25.0.0.Final.zip</url>
+									<url>https://github.com/wildfly/wildfly/releases/download/25.0.0.Final/wildfly-25.0.0.Final.zip</url>
 									<sha1>c47afe112ff0d4d8091a2cebf509afd7fcc07235</sha1>
 									<unpack>true</unpack>
 									<skip>${skipTestsOrITests}</skip>
