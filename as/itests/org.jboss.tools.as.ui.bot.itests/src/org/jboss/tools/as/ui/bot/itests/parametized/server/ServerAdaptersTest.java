@@ -52,12 +52,15 @@ public class ServerAdaptersTest extends AbstractTest {
 	
 	public static final String WILDFLY_FAMILY = "JBoss Community";
 	public static final String EAP_FAMILY = "Red Hat JBoss Middleware";
+	
+	private Integer lastVersionCounter = 0;
 
 	@Parameters(name = "{0}")
 	public static ArrayList<String> data() {
 		ArrayList<String> list = new ArrayList<String>();
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		list.add("WildFly 23");
+		list.add("WildFly 24+");
 		list.add("WildFly 24+");
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		list.add("Red Hat JBoss Enterprise Application Platform 7.0");
@@ -133,8 +136,16 @@ public class ServerAdaptersTest extends AbstractTest {
 	private String getServerHome(String server) {
 		String homeFlag;
 		if (server.contains("WildFly")) {
+			if (server.contains("+")) {
+				lastVersionCounter++;
+			}
 			String version = server.split(" ")[1].replaceAll("\\+","");
-			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> x.contains(version))
+			Integer intFixedVersion = Integer.parseInt(version);
+			if (lastVersionCounter > 1) {
+				intFixedVersion++;
+			}
+			String fixedVersion = intFixedVersion.toString();
+			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> x.contains(fixedVersion))
 					.findFirst().orElse(null);
 			homeFlag = homeFlag.replaceAll("\\+","");
 		} else {
