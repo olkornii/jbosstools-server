@@ -54,7 +54,7 @@ public class ServerAdaptersTest extends AbstractTest {
 	public static final String EAP_FAMILY = "Red Hat JBoss Middleware";
 	
 	private static Integer firstWildflVersion = 24;
-	private Integer lastVersionCounter = -1;
+	public Integer lastVersionCounter = -1;
 
 	@Parameters(name = "{0}")
 	public static ArrayList<String> data() {
@@ -83,6 +83,9 @@ public class ServerAdaptersTest extends AbstractTest {
 
 	public ServerAdaptersTest(String server) {
 		this.server = server;
+		if (this.server.contains("WildFly")) {
+			lastVersionCounter++;
+		}
 	}
 
 	@Test
@@ -90,7 +93,7 @@ public class ServerAdaptersTest extends AbstractTest {
 		NewServerWizard serverW = new NewServerWizard();
 		try {
 //			if (server.contains("+")) {
-			lastVersionCounter++;
+//			lastVersionCounter++;
 //			}
 			serverW.open();
 
@@ -129,12 +132,12 @@ public class ServerAdaptersTest extends AbstractTest {
 
 	protected void setupRuntime(NewServerWizard wizard) {
 		JBossRuntimeWizardPage rp = new JBossRuntimeWizardPage(wizard);
-//		if (lastVersionCounter > 0) {
-		Integer serverVersion = firstWildflVersion + lastVersionCounter;
-		rp.setRuntimeName(this.server + " Runtime_" + serverVersion.toString());
-//		} else {
-//			rp.setRuntimeName(this.server + " Runtime");
-//		}
+		if (this.server.contains("WildFly")) {
+			Integer serverVersion = firstWildflVersion + lastVersionCounter;
+			rp.setRuntimeName(this.server + " Runtime_" + serverVersion.toString());
+		} else {
+			rp.setRuntimeName(this.server + " Runtime");
+		}
 		rp.setRuntimeDir(getDownloadPath().getAbsolutePath());
 	}
 
@@ -146,13 +149,13 @@ public class ServerAdaptersTest extends AbstractTest {
 		String homeFlag;
 		if (server.contains("WildFly")) {
 //			String version = server.split(" ")[1].replaceAll("\\+","");
-			Integer version = firstWildflVersion;
+			Integer version = firstWildflVersion + lastVersionCounter;
 //			Integer intFixedVersion = Integer.parseInt(version);
 //			if (lastVersionCounter > 0) {
-			version += lastVersionCounter;
+//			version += lastVersionCounter;
 //			}
-			String fixedVersion = version.toString();
-			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> x.contains(fixedVersion))
+//			String fixedVersion = version.toString();
+			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> x.contains(version.toString()))
 					.findFirst().orElse(null);
 			homeFlag = homeFlag.replaceAll("\\+","");
 		} else {
