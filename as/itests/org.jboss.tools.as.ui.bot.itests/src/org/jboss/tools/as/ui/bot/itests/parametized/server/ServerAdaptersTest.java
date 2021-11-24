@@ -53,13 +53,14 @@ public class ServerAdaptersTest extends AbstractTest {
 	public static final String WILDFLY_FAMILY = "JBoss Community";
 	public static final String EAP_FAMILY = "Red Hat JBoss Middleware";
 	
+	private static Integer firstWildflVersion = 24;
 	private Integer lastVersionCounter = -1;
 
 	@Parameters(name = "{0}")
 	public static ArrayList<String> data() {
 		ArrayList<String> list = new ArrayList<String>();
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
-		list.add("WildFly 23");
+//		list.add("WildFly 23");
 		list.add("WildFly 24+");
 		list.add("WildFly 24+");
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
@@ -129,7 +130,7 @@ public class ServerAdaptersTest extends AbstractTest {
 	protected void setupRuntime(NewServerWizard wizard) {
 		JBossRuntimeWizardPage rp = new JBossRuntimeWizardPage(wizard);
 		if (lastVersionCounter > 0) {
-			Integer serverVersion = 24 + lastVersionCounter;
+			Integer serverVersion = firstWildflVersion + lastVersionCounter;
 			rp.setRuntimeName(this.server + " Runtime_" + serverVersion.toString());
 		} else {
 			rp.setRuntimeName(this.server + " Runtime");
@@ -144,12 +145,13 @@ public class ServerAdaptersTest extends AbstractTest {
 	private String getServerHome(String server) {
 		String homeFlag;
 		if (server.contains("WildFly")) {
-			String version = server.split(" ")[1].replaceAll("\\+","");
-			Integer intFixedVersion = Integer.parseInt(version);
+//			String version = server.split(" ")[1].replaceAll("\\+","");
+			Integer version = firstWildflVersion;
+//			Integer intFixedVersion = Integer.parseInt(version);
 			if (lastVersionCounter > 0) {
-				intFixedVersion++;
+				version += lastVersionCounter;
 			}
-			String fixedVersion = intFixedVersion.toString();
+			String fixedVersion = version.toString();
 			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> x.contains(fixedVersion))
 					.findFirst().orElse(null);
 			homeFlag = homeFlag.replaceAll("\\+","");
