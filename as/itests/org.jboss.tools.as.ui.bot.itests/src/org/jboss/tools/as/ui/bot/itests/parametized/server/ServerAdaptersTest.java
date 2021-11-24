@@ -53,7 +53,7 @@ public class ServerAdaptersTest extends AbstractTest {
 	public static final String WILDFLY_FAMILY = "JBoss Community";
 	public static final String EAP_FAMILY = "Red Hat JBoss Middleware";
 	
-	private Integer lastVersionCounter = 0;
+	private Integer lastVersionCounter = -1;
 
 	@Parameters(name = "{0}")
 	public static ArrayList<String> data() {
@@ -88,6 +88,9 @@ public class ServerAdaptersTest extends AbstractTest {
 	public void setupLocalServerAdapter() {
 		NewServerWizard serverW = new NewServerWizard();
 		try {
+			if (server.contains("+")) {
+				lastVersionCounter++;
+			}
 			serverW.open();
 
 			NewServerWizardPage sp = new NewServerWizardPage(serverW);
@@ -125,7 +128,12 @@ public class ServerAdaptersTest extends AbstractTest {
 
 	protected void setupRuntime(NewServerWizard wizard) {
 		JBossRuntimeWizardPage rp = new JBossRuntimeWizardPage(wizard);
-		rp.setRuntimeName(this.server + " Runtime");
+		if (lastVersionCounter > 0) {
+			Integer serverVersion = 24 + lastVersionCounter;
+			rp.setRuntimeName(this.server + " Runtime_" + serverVersion.toString());
+		} else {
+			rp.setRuntimeName(this.server + " Runtime");
+		}
 		rp.setRuntimeDir(getDownloadPath().getAbsolutePath());
 	}
 
@@ -136,12 +144,9 @@ public class ServerAdaptersTest extends AbstractTest {
 	private String getServerHome(String server) {
 		String homeFlag;
 		if (server.contains("WildFly")) {
-			if (server.contains("+")) {
-				lastVersionCounter++;
-			}
 			String version = server.split(" ")[1].replaceAll("\\+","");
 			Integer intFixedVersion = Integer.parseInt(version);
-			if (lastVersionCounter > 1) {
+			if (lastVersionCounter > 0) {
 				intFixedVersion++;
 			}
 			String fixedVersion = intFixedVersion.toString();
