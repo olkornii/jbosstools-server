@@ -89,9 +89,9 @@ public class ServerAdaptersTest extends AbstractTest {
 	public void setupLocalServerAdapter() {
 		NewServerWizard serverW = new NewServerWizard();
 		try {
-			if (server.contains("+")) {
-				lastVersionCounter++;
-			}
+//			if (server.contains("+")) {
+			lastVersionCounter++;
+//			}
 			serverW.open();
 
 			NewServerWizardPage sp = new NewServerWizardPage(serverW);
@@ -129,12 +129,12 @@ public class ServerAdaptersTest extends AbstractTest {
 
 	protected void setupRuntime(NewServerWizard wizard) {
 		JBossRuntimeWizardPage rp = new JBossRuntimeWizardPage(wizard);
-		if (lastVersionCounter > 0) {
-			Integer serverVersion = firstWildflVersion + lastVersionCounter;
-			rp.setRuntimeName(this.server + " Runtime_" + serverVersion.toString());
-		} else {
-			rp.setRuntimeName(this.server + " Runtime");
-		}
+//		if (lastVersionCounter > 0) {
+		Integer serverVersion = firstWildflVersion + lastVersionCounter;
+		rp.setRuntimeName(this.server + " Runtime_" + serverVersion.toString());
+//		} else {
+//			rp.setRuntimeName(this.server + " Runtime");
+//		}
 		rp.setRuntimeDir(getDownloadPath().getAbsolutePath());
 	}
 
@@ -148,9 +148,9 @@ public class ServerAdaptersTest extends AbstractTest {
 //			String version = server.split(" ")[1].replaceAll("\\+","");
 			Integer version = firstWildflVersion;
 //			Integer intFixedVersion = Integer.parseInt(version);
-			if (lastVersionCounter > 0) {
-				version += lastVersionCounter;
-			}
+//			if (lastVersionCounter > 0) {
+			version += lastVersionCounter;
+//			}
 			String fixedVersion = version.toString();
 			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> x.contains(fixedVersion))
 					.findFirst().orElse(null);
