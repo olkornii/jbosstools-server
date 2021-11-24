@@ -53,16 +53,16 @@ public class ServerAdaptersTest extends AbstractTest {
 	public static final String WILDFLY_FAMILY = "JBoss Community";
 	public static final String EAP_FAMILY = "Red Hat JBoss Middleware";
 	
-	private static Integer firstWildflVersion = 24;
-	public Integer lastVersionCounter = -1;
+//	private static Integer firstWildflVersion = 24;
+//	public Integer lastVersionCounter = -1;
 
 	@Parameters(name = "{0}")
 	public static ArrayList<String> data() {
 		ArrayList<String> list = new ArrayList<String>();
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 //		list.add("WildFly 23");
-		list.add("WildFly 24+");
-		list.add("WildFly 24+");
+		list.add("WildFly 24");
+		list.add("WildFly 25");
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		list.add("Red Hat JBoss Enterprise Application Platform 7.0");
 		list.add("Red Hat JBoss Enterprise Application Platform 7.1");
@@ -83,9 +83,9 @@ public class ServerAdaptersTest extends AbstractTest {
 
 	public ServerAdaptersTest(String server) {
 		this.server = server;
-		if (this.server.contains("WildFly")) {
-			lastVersionCounter++;
-		}
+//		if (this.server.contains("WildFly")) {
+//			lastVersionCounter++;
+//		}
 	}
 
 	@Test
@@ -99,7 +99,7 @@ public class ServerAdaptersTest extends AbstractTest {
 
 			NewServerWizardPage sp = new NewServerWizardPage(serverW);
 
-			sp.selectType(getFamily(server), server);
+			sp.selectType(getFamily(server), getServerName(server));
 
 			serverW.next();
 
@@ -129,15 +129,23 @@ public class ServerAdaptersTest extends AbstractTest {
 			return EAP_FAMILY;
 		}
 	}
+	
+	private String getServerName(String server) {
+		if (server.contains("WildFly")) {
+			return "WildFly 24+";
+		} else {
+			return server;
+		}
+	}
 
 	protected void setupRuntime(NewServerWizard wizard) {
 		JBossRuntimeWizardPage rp = new JBossRuntimeWizardPage(wizard);
-		if (this.server.contains("WildFly")) {
-			Integer serverVersion = firstWildflVersion + lastVersionCounter;
-			rp.setRuntimeName(this.server + " Runtime_" + serverVersion.toString());
-		} else {
-			rp.setRuntimeName(this.server + " Runtime");
-		}
+//		if (this.server.contains("WildFly")) {
+//			Integer serverVersion = firstWildflVersion + lastVersionCounter;
+//			rp.setRuntimeName(this.server + " Runtime_" + serverVersion.toString());
+//		} else {
+		rp.setRuntimeName(this.server + " Runtime");
+//		}
 		rp.setRuntimeDir(getDownloadPath().getAbsolutePath());
 	}
 
@@ -148,16 +156,16 @@ public class ServerAdaptersTest extends AbstractTest {
 	private String getServerHome(String server) {
 		String homeFlag;
 		if (server.contains("WildFly")) {
-//			String version = server.split(" ")[1].replaceAll("\\+","");
-			Integer version = firstWildflVersion + lastVersionCounter;
+			String version = server.split(" ")[1];
+//			Integer version = firstWildflVersion + lastVersionCounter;
 //			Integer intFixedVersion = Integer.parseInt(version);
 //			if (lastVersionCounter > 0) {
 //			version += lastVersionCounter;
 //			}
 //			String fixedVersion = version.toString();
-			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> x.contains(version.toString()))
+			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> x.contains(version))
 					.findFirst().orElse(null);
-			homeFlag = homeFlag.replaceAll("\\+","");
+//			homeFlag = homeFlag.replaceAll("\\+","");
 		} else {
 			String version = server.split(" ")[6];
 			homeFlag = Arrays.stream(PomServerConstants.getJBossHomeFlags()).filter(x -> (x.contains(version) && x.contains("eap")))
