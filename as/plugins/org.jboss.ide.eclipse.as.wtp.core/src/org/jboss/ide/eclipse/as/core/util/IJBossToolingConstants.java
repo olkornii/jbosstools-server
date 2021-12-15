@@ -110,6 +110,7 @@ public interface IJBossToolingConstants {
 			WILDFLY_230,
 			EAP_74,
 			WILDFLY_240,
+			WILDFLY_250,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	};
 	// NEW_SERVER_ADAPTER Add the new runtime constant above this line
@@ -132,6 +133,7 @@ public interface IJBossToolingConstants {
 		SERVER_WILDFLY_230,
 		SERVER_EAP_74,
 		SERVER_WILDFLY_240,
+		SERVER_WILDFLY_250,
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 	};
 	// NEW_SERVER_ADAPTER Add the new server id above this line
