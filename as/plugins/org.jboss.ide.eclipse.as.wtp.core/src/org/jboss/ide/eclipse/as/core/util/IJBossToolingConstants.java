@@ -47,7 +47,9 @@ public interface IJBossToolingConstants {
 	public static final String SERVER_EAP_73 = "org.jboss.ide.eclipse.as.eap.73"; //$NON-NLS-1$
 	public static final String EAP_74 = "org.jboss.ide.eclipse.as.runtime.eap.74"; //$NON-NLS-1$
 	public static final String SERVER_EAP_74 = "org.jboss.ide.eclipse.as.eap.74"; //$NON-NLS-1$
-	// AUTOGEN_SERVER_ADAPTER_CHUNK
+	// AUTOGEN_SERVER_ADAPTER_CHUNK	
+	public static final String WILDFLY_250 = "org.jboss.ide.eclipse.as.runtime.wildfly.250"; //$NON-NLS-1$
+	public static final String SERVER_WILDFLY_250 = "org.jboss.ide.eclipse.as.wildfly.250"; //$NON-NLS-1$
 	public static final String WILDFLY_240 = "org.jboss.ide.eclipse.as.runtime.wildfly.240"; //$NON-NLS-1$
 	public static final String SERVER_WILDFLY_240 = "org.jboss.ide.eclipse.as.wildfly.240"; //$NON-NLS-1$
 	public static final String WILDFLY_230 = "org.jboss.ide.eclipse.as.runtime.wildfly.230"; //$NON-NLS-1$
