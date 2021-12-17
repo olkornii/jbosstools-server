@@ -23,6 +23,7 @@ import org.eclipse.reddeer.swt.api.Button;
 import org.eclipse.reddeer.swt.condition.ShellIsAvailable;
 import org.eclipse.reddeer.swt.impl.button.PushButton;
 import org.eclipse.reddeer.swt.impl.text.DefaultText;
+import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
 import org.jboss.tools.as.jmx.ui.bot.itests.JMXTestTemplate;
 import org.jboss.tools.jmx.reddeer.core.JMXConnection;
 import org.jboss.tools.jmx.reddeer.core.JMXConnectionItem;
@@ -42,6 +43,7 @@ public class JMXLocalConnectionTest extends JMXTestTemplate {
 
 	@Override
 	public void setUpJMXConnection() {
+		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 		local = view.getLocalProcessesItem();
 		if (local == null) {
 			fail("There are no local processes");
