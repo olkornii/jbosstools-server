@@ -16,6 +16,8 @@ import java.util.Arrays;
 
 import org.eclipse.reddeer.common.exception.RedDeerException;
 import org.eclipse.reddeer.common.logging.Logger;
+import org.eclipse.reddeer.common.wait.AbstractWait;
+import org.eclipse.reddeer.common.wait.TimePeriod;
 //import org.eclipse.reddeer.common.matcher.VersionMatcher;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizard;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizardPage;
@@ -23,6 +25,7 @@ import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizardPage;
 import org.eclipse.reddeer.junit.internal.runner.ParameterizedRequirementsRunnerFactory;
 //import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
+import org.eclipse.reddeer.swt.impl.button.RadioButton;
 //import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.workbench.handler.WorkbenchShellHandler;
 import org.jboss.ide.eclipse.as.reddeer.server.wizard.page.JBossRuntimeWizardPage;
@@ -141,6 +144,8 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 		JBossRuntimeWizardPage rp = new JBossRuntimeWizardPage(wizard);
 		rp.setRuntimeName(this.server + " Runtime");
 		rp.setRuntimeDir(getDownloadPath().getAbsolutePath());
+		new RadioButton("Alternate JRE: ").toggle(true);
+		AbstractWait.sleep(TimePeriod.DEFAULT);
 	}
 	
 	protected File getDownloadPath() {
