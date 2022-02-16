@@ -13,14 +13,17 @@ package org.jboss.tools.as.ui.bot.itests.parametized.server;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 
 import org.eclipse.reddeer.common.exception.RedDeerException;
 import org.eclipse.reddeer.common.logging.Logger;
+import org.eclipse.reddeer.common.matcher.VersionMatcher;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizard;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizardPage;
+import org.eclipse.reddeer.junit.annotation.RequirementRestriction;
 import org.eclipse.reddeer.junit.internal.runner.ParameterizedRequirementsRunnerFactory;
+import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
+import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.workbench.handler.WorkbenchShellHandler;
 import org.jboss.ide.eclipse.as.reddeer.server.wizard.page.JBossRuntimeWizardPage;
 import org.jboss.ide.eclipse.as.reddeer.server.wizard.page.NewServerAdapterPage;
@@ -29,10 +32,8 @@ import org.jboss.tools.as.ui.bot.itests.reddeer.util.OperateServerTemplate;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.junit.runners.Parameterized.Parameters;
 import org.junit.runners.Parameterized.UseParametersRunnerFactory;
 
@@ -44,16 +45,15 @@ import org.junit.runners.Parameterized.UseParametersRunnerFactory;
  *
  */
 @RunWith(RedDeerSuite.class)
+@JRE(cleanup=true, setDefault=true)
 @UseParametersRunnerFactory(ParameterizedRequirementsRunnerFactory.class)
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ServerActualJavaTest extends AbstractTest {
 	
 private final Logger LOGGER = Logger.getLogger(this.getClass());
 	
 	public static final String WILDFLY_FAMILY = "JBoss Community";
 	public static final String EAP_FAMILY = "Red Hat JBoss Middleware";
-
-//	SMOKETEST_DOWNLOADS
 	
 	@Parameters(name = "{0}")
 	public static ArrayList<String> data() {
@@ -61,10 +61,13 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 
 		list.add("WildFly 26");
 		list.add("Red Hat JBoss Enterprise Application Platform 7.4");
-		
-//		Collection<Object[]> my_list = ServerRuntimeUIConstants.getParametersForScope("SMOKETEST_DOWNLOADS");
 
 		return list;
+	}
+	
+	@RequirementRestriction
+	public static RequirementMatcher getRestrictionMatcher() {
+	  return new RequirementMatcher(JRE.class, "version", new VersionMatcher(">1.8"));
 	}
 
 	@BeforeClass
