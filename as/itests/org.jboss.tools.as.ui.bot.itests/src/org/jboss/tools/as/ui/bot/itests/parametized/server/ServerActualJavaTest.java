@@ -16,17 +16,11 @@ import java.util.Arrays;
 
 import org.eclipse.reddeer.common.exception.RedDeerException;
 import org.eclipse.reddeer.common.logging.Logger;
-import org.eclipse.reddeer.common.wait.AbstractWait;
-import org.eclipse.reddeer.common.wait.TimePeriod;
-//import org.eclipse.reddeer.common.matcher.VersionMatcher;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizard;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizardPage;
-//import org.eclipse.reddeer.junit.annotation.RequirementRestriction;
 import org.eclipse.reddeer.junit.internal.runner.ParameterizedRequirementsRunnerFactory;
-//import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
 import org.eclipse.reddeer.swt.impl.button.RadioButton;
-//import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.workbench.handler.WorkbenchShellHandler;
 import org.jboss.ide.eclipse.as.reddeer.server.wizard.page.JBossRuntimeWizardPage;
 import org.jboss.ide.eclipse.as.reddeer.server.wizard.page.NewServerAdapterPage;
@@ -48,9 +42,7 @@ import org.junit.runners.Parameterized.UseParametersRunnerFactory;
  *
  */
 @RunWith(RedDeerSuite.class)
-//@JRE(cleanup=true, setDefault=true)
 @UseParametersRunnerFactory(ParameterizedRequirementsRunnerFactory.class)
-//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ServerActualJavaTest extends AbstractTest {
 	
 private final Logger LOGGER = Logger.getLogger(this.getClass());
@@ -67,11 +59,6 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 
 		return list;
 	}
-	
-//	@RequirementRestriction
-//	public static RequirementMatcher getRestrictionMatcher() {
-//	  return new RequirementMatcher(JRE.class, "version", new VersionMatcher(">1.8"));
-//	}
 
 	@BeforeClass
 	public static void prepareWorkspace() {
@@ -145,7 +132,6 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 		rp.setRuntimeName(this.server + " Runtime");
 		rp.setRuntimeDir(getDownloadPath().getAbsolutePath());
 		new RadioButton("Alternate JRE: ").toggle(true);
-		AbstractWait.sleep(TimePeriod.DEFAULT);
 	}
 	
 	protected File getDownloadPath() {
