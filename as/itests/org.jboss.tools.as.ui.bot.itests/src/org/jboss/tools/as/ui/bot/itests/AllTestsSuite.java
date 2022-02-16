@@ -16,6 +16,7 @@ import org.jboss.tools.as.ui.bot.itests.archives.VariousProjectsArchiving;
 import org.jboss.tools.as.ui.bot.itests.download.InvalidCredentialProductDownloadTest;
 import org.jboss.tools.as.ui.bot.itests.parametized.server.RuntimeDetectionDuplicatesTest;
 import org.jboss.tools.as.ui.bot.itests.parametized.server.ServerAdaptersTest;
+import org.jboss.tools.as.ui.bot.itests.parametized.server.ServerActualJavaTest;
 import org.jboss.tools.as.ui.bot.itests.parametized.server.ServerRuntimesTest;
 import org.jboss.tools.as.ui.bot.itests.parametized.server.ShowInContextMenuTest;
 import org.junit.runner.RunWith;
@@ -23,13 +24,14 @@ import org.junit.runners.Suite;
 
 @RunWith(RedDeerSuite.class)
 @Suite.SuiteClasses({ 
-	InvalidCredentialProductDownloadTest.class, 
-	ServerRuntimesTest.class,
-	VariousProjectsArchiving.class,
-	DeployingArchiveTest.class,
-	RuntimeDetectionDuplicatesTest.class,
-	ServerAdaptersTest.class,
-	ShowInContextMenuTest.class
+//	InvalidCredentialProductDownloadTest.class, 
+//	ServerRuntimesTest.class,
+//	VariousProjectsArchiving.class,
+//	DeployingArchiveTest.class,
+//	RuntimeDetectionDuplicatesTest.class,
+//	ServerAdaptersTest.class,
+	ServerActualJavaTest.class
+//	ShowInContextMenuTest.class
 })
 public class AllTestsSuite {
 
