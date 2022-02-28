@@ -16,6 +16,8 @@ import java.util.Arrays;
 
 import org.eclipse.reddeer.common.exception.RedDeerException;
 import org.eclipse.reddeer.common.logging.Logger;
+import org.eclipse.reddeer.common.wait.AbstractWait;
+import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizard;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizardPage;
 import org.eclipse.reddeer.junit.internal.runner.ParameterizedRequirementsRunnerFactory;
@@ -94,6 +96,8 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 
 			setupRuntime(serverW);
 
+			AbstractWait.sleep(TimePeriod.DEFAULT);
+			
 			serverW.finish();
 		} catch (AssertionError | RuntimeException e) {
 			try {
