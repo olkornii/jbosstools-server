@@ -20,6 +20,7 @@ import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizard;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizardPage;
 import org.eclipse.reddeer.junit.internal.runner.ParameterizedRequirementsRunnerFactory;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
+import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.swt.impl.button.RadioButton;
 import org.eclipse.reddeer.workbench.handler.WorkbenchShellHandler;
 import org.jboss.ide.eclipse.as.reddeer.server.wizard.page.JBossRuntimeWizardPage;
@@ -42,6 +43,7 @@ import org.junit.runners.Parameterized.UseParametersRunnerFactory;
  *
  */
 @RunWith(RedDeerSuite.class)
+@JRE(cleanup=true, setDefault=true)
 @UseParametersRunnerFactory(ParameterizedRequirementsRunnerFactory.class)
 public class ServerActualJavaTest extends AbstractTest {
 	
@@ -131,7 +133,7 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 		JBossRuntimeWizardPage rp = new JBossRuntimeWizardPage(wizard);
 		rp.setRuntimeName(this.server + " Runtime");
 		rp.setRuntimeDir(getDownloadPath().getAbsolutePath());
-		new RadioButton("Alternate JRE: ").toggle(true);
+//		new RadioButton("Alternate JRE: ").toggle(true);
 	}
 	
 	protected File getDownloadPath() {
