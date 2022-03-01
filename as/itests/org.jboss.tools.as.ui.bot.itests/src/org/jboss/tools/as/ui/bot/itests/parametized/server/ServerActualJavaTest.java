@@ -13,6 +13,7 @@ package org.jboss.tools.as.ui.bot.itests.parametized.server;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.reddeer.common.exception.RedDeerException;
 import org.eclipse.reddeer.common.logging.Logger;
@@ -24,6 +25,8 @@ import org.eclipse.reddeer.junit.internal.runner.ParameterizedRequirementsRunner
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
 import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.swt.impl.button.RadioButton;
+import org.eclipse.reddeer.swt.impl.combo.DefaultCombo;
+import org.eclipse.reddeer.swt.impl.group.DefaultGroup;
 import org.eclipse.reddeer.workbench.handler.WorkbenchShellHandler;
 import org.jboss.ide.eclipse.as.reddeer.server.wizard.page.JBossRuntimeWizardPage;
 import org.jboss.ide.eclipse.as.reddeer.server.wizard.page.NewServerAdapterPage;
@@ -96,7 +99,7 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 
 			setupRuntime(serverW);
 
-			AbstractWait.sleep(TimePeriod.DEFAULT);
+//			AbstractWait.sleep(TimePeriod.LONG);
 			
 			serverW.finish();
 		} catch (AssertionError | RuntimeException e) {
@@ -108,15 +111,15 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 			throw e;
 		}
 		
-		OperateServerTemplate operate = new OperateServerTemplate(server);
-    	operate.setUp();
-    	try {
-    		operate.operateServer();
-    	} finally {
-    		operate.cleanServerAndConsoleView();
-    	}
+//		OperateServerTemplate operate = new OperateServerTemplate(server);
+//    	operate.setUp();
+//    	try {
+//    		operate.operateServer();
+//    	} finally {
+//    		operate.cleanServerAndConsoleView();
+//    	}
 	}
-	
+
 	private String getFamily(String server) {
 		if (server.contains("WildFly")) {
 			return WILDFLY_FAMILY;
@@ -124,7 +127,7 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 			return EAP_FAMILY;
 		}
 	}
-	
+
 	private String getServerName(String server) {
 		if (server.contains("WildFly")) {
 			return "WildFly 24+";
@@ -132,14 +135,17 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 			return server;
 		}
 	}
-	
+
 	protected void setupRuntime(NewServerWizard wizard) {
 		JBossRuntimeWizardPage rp = new JBossRuntimeWizardPage(wizard);
 		rp.setRuntimeName(this.server + " Runtime");
 		rp.setRuntimeDir(getDownloadPath().getAbsolutePath());
-//		new RadioButton("Alternate JRE: ").toggle(true);
+		new RadioButton("Alternate JRE: ").toggle(true);
+		DefaultGroup r_JRE = new DefaultGroup("Runtime JRE");
+		DefaultCombo r_COMBO = new DefaultCombo(r_JRE, 1);
+		r_COMBO.setSelection(1);
 	}
-	
+
 	protected File getDownloadPath() {
 		return new File(getServerHome(this.server));
 	}
