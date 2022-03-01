@@ -99,7 +99,7 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 
 			setupRuntime(serverW);
 
-//			AbstractWait.sleep(TimePeriod.LONG);
+			AbstractWait.sleep(TimePeriod.DEFAULT);
 			
 			serverW.finish();
 		} catch (AssertionError | RuntimeException e) {
@@ -111,13 +111,13 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 			throw e;
 		}
 		
-//		OperateServerTemplate operate = new OperateServerTemplate(server);
-//    	operate.setUp();
-//    	try {
-//    		operate.operateServer();
-//    	} finally {
-//    		operate.cleanServerAndConsoleView();
-//    	}
+		OperateServerTemplate operate = new OperateServerTemplate(server);
+    	operate.setUp();
+    	try {
+    		operate.operateServer();
+    	} finally {
+    		operate.cleanServerAndConsoleView();
+    	}
 	}
 
 	private String getFamily(String server) {
