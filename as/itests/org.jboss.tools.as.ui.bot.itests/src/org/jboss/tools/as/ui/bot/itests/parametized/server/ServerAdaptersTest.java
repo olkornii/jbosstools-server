@@ -16,9 +16,12 @@ import java.util.Arrays;
 
 import org.eclipse.reddeer.common.exception.RedDeerException;
 import org.eclipse.reddeer.common.logging.Logger;
+import org.eclipse.reddeer.common.matcher.VersionMatcher;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizard;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizardPage;
+import org.eclipse.reddeer.junit.annotation.RequirementRestriction;
 import org.eclipse.reddeer.junit.internal.runner.ParameterizedRequirementsRunnerFactory;
+import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
 import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.workbench.handler.WorkbenchShellHandler;
@@ -68,6 +71,11 @@ public class ServerAdaptersTest extends AbstractTest {
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 
 		return list;
+	}
+	
+	@RequirementRestriction
+	public static RequirementMatcher getRestrictionMatcher() {
+	  return new RequirementMatcher(JRE.class, "version", new VersionMatcher("1.8"));
 	}
 
 	@BeforeClass

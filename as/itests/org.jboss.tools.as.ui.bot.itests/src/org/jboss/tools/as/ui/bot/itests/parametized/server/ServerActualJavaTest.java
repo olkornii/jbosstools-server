@@ -13,15 +13,17 @@ package org.jboss.tools.as.ui.bot.itests.parametized.server;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.eclipse.reddeer.common.exception.RedDeerException;
 import org.eclipse.reddeer.common.logging.Logger;
+import org.eclipse.reddeer.common.matcher.VersionMatcher;
 import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizard;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.NewServerWizardPage;
+import org.eclipse.reddeer.junit.annotation.RequirementRestriction;
 import org.eclipse.reddeer.junit.internal.runner.ParameterizedRequirementsRunnerFactory;
+import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
 import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.swt.impl.button.RadioButton;
@@ -65,6 +67,11 @@ private final Logger LOGGER = Logger.getLogger(this.getClass());
 		list.add("Red Hat JBoss Enterprise Application Platform 7.4");
 
 		return list;
+	}
+	
+	@RequirementRestriction
+	public static RequirementMatcher getRestrictionMatcher() {
+	  return new RequirementMatcher(JRE.class, "version", new VersionMatcher(">1.8"));
 	}
 
 	@BeforeClass
