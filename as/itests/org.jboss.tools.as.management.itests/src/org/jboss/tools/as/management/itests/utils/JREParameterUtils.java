@@ -29,6 +29,7 @@ public class JREParameterUtils extends Assert {
 
 	private static final String JRE8_SYSPROP = "jbosstools.test.jre.8";
 	private static final String JRE11_SYSPROP = "jbosstools.test.jre.11";
+	private static final String JRE17_SYSPROP = "jbosstools.test.jre.17";
 
 	public static IExecutionEnvironment getRequiredExecEnv(String runtimeType) {
 		IRuntimeType type = ServerCore.findRuntimeType(runtimeType);
@@ -77,6 +78,10 @@ public class JREParameterUtils extends Assert {
 		return java;
 	}
 	
+	public static void verifyJava17HomeSet() {
+		internalJavaHomeSet(getJava17Home(), JRE17_SYSPROP, "Java 17", "17");
+	}
+	
 	public static void verifyJava11HomeSet() {
 		internalJavaHomeSet(getJava11Home(), JRE11_SYSPROP, "Java 11", "11");
 	}
@@ -118,6 +123,10 @@ public class JREParameterUtils extends Assert {
 		String versionError = asString + " version string must start with \"" + versionPrefix + "\". Please verify sysprop " 
 				+ sysprop + ". Current version: " + versionString;
 		assertTrue(versionError,versionString.startsWith(versionPrefix));
+	}
+	
+	public static String getJava17Home() {
+		return System.getProperty(JRE17_SYSPROP);
 	}
 	
 	public static String getJava11Home() {
