@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.jboss.tools.as.jmx.ui.bot.itests.server.connection;
 
+import org.eclipse.reddeer.direct.preferences.Preferences;
 import org.eclipse.reddeer.junit.annotation.RequirementRestriction;
 import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.requirements.server.ServerRequirementState;
@@ -35,6 +36,10 @@ public class JMXServerConnectionTest extends JMXServerTestTemplate {
 
 	@Before
 	public void setupServer() {
+//		String value = Preferences.get("org.eclipse.debug.ui", "Console.limitConsoleOutput");
+		Preferences.set("org.eclipse.debug.ui", "Console.limitConsoleOutput", "false");
+//		String newValue = Preferences.get("org.eclipse.debug.ui", "Console.limitConsoleOutput");
+		
 		setUpView();
 
 		server = getServer(serverConfig.getServerName());
