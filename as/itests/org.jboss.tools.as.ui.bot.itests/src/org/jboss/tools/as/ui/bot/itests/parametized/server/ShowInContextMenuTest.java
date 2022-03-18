@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
+import org.eclipse.reddeer.direct.preferences.Preferences;
 import org.eclipse.reddeer.eclipse.condition.BrowserContainsText;
 import org.eclipse.reddeer.eclipse.debug.ui.views.launch.LaunchView;
 import org.eclipse.reddeer.eclipse.ui.console.ConsoleView;
@@ -61,6 +62,7 @@ public class ShowInContextMenuTest {
 	
 	@Before
 	public void selectServer() {
+		Preferences.set("org.eclipse.debug.ui", "Console.limitConsoleOutput", "false");
 		sv = new ServersView2();
 		sv.open();
 		server = sv.getServer("WildFly 24+ Server");
