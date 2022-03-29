@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.reddeer.common.wait.AbstractWait;
+import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.reddeer.swt.api.TreeItem;
 import org.eclipse.reddeer.swt.impl.tree.DefaultTree;
@@ -41,6 +43,7 @@ public class JMXUITest extends JMXTestTemplate {
 	
 	@Override
 	public void setUpJMXConnection() {
+		AbstractWait.sleep(TimePeriod.DEFAULT); // wait few seconds for load list
 		local = view.getLocalProcessesItem();
 		if (local == null) {
 			fail("There are no local processes");
