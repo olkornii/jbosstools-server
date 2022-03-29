@@ -23,9 +23,11 @@ import java.util.stream.Collectors;
 
 import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
+import org.eclipse.reddeer.common.wait.WaitWhile;
 import org.eclipse.reddeer.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.reddeer.swt.api.TreeItem;
 import org.eclipse.reddeer.swt.impl.tree.DefaultTree;
+import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
 import org.jboss.tools.jmx.reddeer.core.JMXConnection;
 import org.jboss.tools.jmx.reddeer.core.JMXConnectionItem;
 import org.jboss.tools.jmx.reddeer.core.JMXConnectionState;
@@ -43,6 +45,7 @@ public class JMXUITest extends JMXTestTemplate {
 	
 	@Override
 	public void setUpJMXConnection() {
+		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 		AbstractWait.sleep(TimePeriod.DEFAULT); // wait few seconds for load list
 		local = view.getLocalProcessesItem();
 		if (local == null) {
