@@ -63,7 +63,7 @@ public class JMXUITest extends JMXTestTemplate {
 			.map( item -> item.getLabel().getName())
 			.collect( Collectors.joining("\r\n"));
 			fail("There is no connection like searched one: " + JAVA_APP + 
-					"Only available connections are: " + connections);
+					" Only available connections are: " + connections);
 		}
 	}
 	
