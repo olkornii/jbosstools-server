@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
+import org.eclipse.reddeer.common.wait.WaitWhile;
 import org.eclipse.reddeer.direct.preferences.Preferences;
 import org.eclipse.reddeer.eclipse.condition.BrowserContainsText;
 import org.eclipse.reddeer.eclipse.debug.ui.views.launch.LaunchView;
@@ -32,6 +33,7 @@ import org.eclipse.reddeer.swt.api.TreeItem;
 import org.eclipse.reddeer.swt.condition.PageIsLoaded;
 import org.eclipse.reddeer.swt.impl.browser.InternalBrowser;
 import org.eclipse.reddeer.swt.impl.menu.ContextMenu;
+import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
 import org.eclipse.reddeer.workbench.core.exception.WorkbenchCoreLayerException;
 import org.eclipse.reddeer.workbench.impl.editor.DefaultEditor;
 import org.jboss.ide.eclipse.as.reddeer.server.requirement.InternalBrowserRequirement.UseInternalBrowser;
@@ -71,7 +73,12 @@ public class ShowInContextMenuTest {
 	
 	@After
 	public void cleanUp() {
+		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 		if(server.getLabel().getState().isRunningState()) {
+			server.stop();
+		}
+		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
+		if(server.getLabel().getState().isRunningState()) { // can be stopped only after second click
 			server.stop();
 		}
 		sv.close();
