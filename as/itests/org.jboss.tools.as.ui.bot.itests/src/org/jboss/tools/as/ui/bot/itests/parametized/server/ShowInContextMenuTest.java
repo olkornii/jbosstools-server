@@ -32,10 +32,14 @@ import org.eclipse.reddeer.swt.api.MenuItem;
 import org.eclipse.reddeer.swt.api.TreeItem;
 import org.eclipse.reddeer.swt.condition.PageIsLoaded;
 import org.eclipse.reddeer.swt.impl.browser.InternalBrowser;
+import org.eclipse.reddeer.swt.impl.ctab.DefaultCTabFolder;
 import org.eclipse.reddeer.swt.impl.menu.ContextMenu;
+import org.eclipse.reddeer.swt.impl.toolbar.DefaultToolBar;
+import org.eclipse.reddeer.swt.impl.toolbar.DefaultToolItem;
 import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
 import org.eclipse.reddeer.workbench.core.exception.WorkbenchCoreLayerException;
 import org.eclipse.reddeer.workbench.impl.editor.DefaultEditor;
+import org.eclipse.wst.server.ui.internal.view.servers.ServersView;
 import org.jboss.ide.eclipse.as.reddeer.server.requirement.InternalBrowserRequirement.UseInternalBrowser;
 import org.jboss.ide.eclipse.as.reddeer.server.requirement.ServerRequirement.JBossServer;
 import org.jboss.tools.jmx.reddeer.core.JMXConnection;
@@ -75,12 +79,22 @@ public class ShowInContextMenuTest {
 	public void cleanUp() {
 		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 		if(server.getLabel().getState().isRunningState()) {
-			server.stop();
+			new ConsoleView().activate();
+			new ConsoleView().terminateConsole();
+			new ServersView2().activate();
+		}
+//		new ConsoleView().terminateConsole();
+//		new ServersView().
+//		new DefaultCTabFolder();
+//		new DefaultToolItem("Stop the server").click();
+		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
+		if(server.getLabel().getState().isRunningState()) {
+//			server.stop();
+			new ConsoleView().activate();
+			new ConsoleView().terminateConsole();
+			new ServersView2().activate();
 		}
 		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
-		if(server.getLabel().getState().isRunningState()) { // can be stopped only after second click
-			server.stop();
-		}
 		sv.close();
 		try {
 			new DefaultEditor().close();
