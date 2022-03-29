@@ -83,10 +83,6 @@ public class ShowInContextMenuTest {
 			new ConsoleView().terminateConsole();
 			new ServersView2().activate();
 		}
-//		new ConsoleView().terminateConsole();
-//		new ServersView().
-//		new DefaultCTabFolder();
-//		new DefaultToolItem("Stop the server").click();
 		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 		if(server.getLabel().getState().isRunningState()) {
 //			server.stop();
