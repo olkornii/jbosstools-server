@@ -48,12 +48,13 @@ public class JMXUITest extends JMXTestTemplate {
 
 		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 
-		AbstractWait.sleep(TimePeriod.getCustom(30)); // wait few seconds for load list
+		AbstractWait.sleep(TimePeriod.getCustom(10)); // wait few seconds for load list
+
 		local = view.getLocalProcessesItem();
 		if (local == null) {
 			fail("There are no local processes");
 		}
-		AbstractWait.sleep(TimePeriod.getCustom(10));
+		AbstractWait.sleep(TimePeriod.getCustom(10)); // wait few seconds for load list
 
 		List<JMXConnection> foundConnestions = local.getConnectionsIgnoreCase(JAVA_APP);
 		if (!foundConnestions.isEmpty()) {
