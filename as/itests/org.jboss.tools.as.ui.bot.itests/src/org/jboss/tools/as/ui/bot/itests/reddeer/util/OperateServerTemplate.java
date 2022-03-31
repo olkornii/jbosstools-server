@@ -154,18 +154,10 @@ public class OperateServerTemplate {
 
 	public void restartServer() {
 		try {
-//			serversView.getServer(getServerName()).restart(); // workaround
-			new ConsoleView().activate();
-			new ConsoleView().terminateConsole();
-			new ServersView2().activate();
-			serversView.getServer(getServerName()).start();
+			serversView.getServer(getServerName()).restart();
 		} catch (WaitTimeoutExpiredException ex){
 			//try it once again
-//			serversView.getServer(getServerName()).restart(); // workaround
-			new ConsoleView().activate();
-			new ConsoleView().terminateConsole();
-			new ServersView2().activate();
-			serversView.getServer(getServerName()).start();
+			serversView.getServer(getServerName()).restart();
 		}
 		tryServerProcessNotTerminated();
 		final String state = "Started";
@@ -183,19 +175,13 @@ public class OperateServerTemplate {
 		serversView.getServer(getServerName()).select();
 		try {
 			serversView.getServer(getServerName()).setServerStateChangeTimeout(TimePeriod.LONG);
-//			serversView.getServer(getServerName()).stop(); // workaround
-			new ConsoleView().activate();
-			new ConsoleView().terminateConsole();
-			new ServersView2().activate();
+			serversView.getServer(getServerName()).stop();
 		} catch (WaitTimeoutExpiredException ex) {
 			//try to stop server once again
 			serversView.open();
 			serversView.getServer(getServerName()).setServerStateChangeTimeout(TimePeriod.LONG);
 			serversView.getServer(getServerName()).select();
-//			new ContextMenuItem(new RegexMatcher("Stop.*")).select(); // workaround
-			new ConsoleView().activate();
-			new ConsoleView().terminateConsole();
-			new ServersView2().activate();
+			new ContextMenuItem(new RegexMatcher("Stop.*")).select();
 			new WaitUntil(new JobIsRunning(),TimePeriod.LONG);
 		}
 		tryServerProcessNotTerminated();
