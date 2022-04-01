@@ -32,14 +32,24 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import org.eclipse.reddeer.common.condition.AbstractWaitCondition;
+import org.eclipse.reddeer.common.exception.WaitTimeoutExpiredException;
 import org.eclipse.reddeer.common.logging.Logger;
+import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
+import org.eclipse.reddeer.common.wait.WaitWhile;
 import org.eclipse.reddeer.direct.preferences.Preferences;
+import org.eclipse.reddeer.eclipse.condition.ServerHasState;
+import org.eclipse.reddeer.eclipse.condition.ServerModuleHasState;
+import org.eclipse.reddeer.eclipse.ui.console.ConsoleView;
+import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersView2;
+import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersViewEnums.ServerState;
 import org.eclipse.reddeer.junit.annotation.RequirementRestriction;
 import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.requirements.server.ServerRequirementState;
 import org.eclipse.reddeer.swt.impl.combo.DefaultCombo;
+import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
+import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
 import org.hamcrest.core.IsNull;
 import org.jboss.ide.eclipse.as.reddeer.server.requirement.ServerRequirement.JBossServer;
 import org.jboss.tools.jmx.reddeer.ui.editor.AttributesPage;
@@ -253,6 +263,26 @@ public class JMXServerConnectionAutoDeployDisableTest extends JMXServerTestTempl
 			return exists;
 		}
     	
+    }
+    
+    public void stopsServer() {
+    	new ServersView2().activate();
+    	server.select();
+		try {
+			new ContextMenuItem("Stop").select();
+			new WaitWhile(new JobIsRunning());
+			new WaitUntil(new ServerHasState(server, ServerState.STOPPED));
+		} catch (WaitTimeoutExpiredException ex){
+			//try it once again
+			new ContextMenuItem("Stop").select();
+			new WaitWhile(new JobIsRunning());
+			new WaitUntil(new ServerHasState(server, ServerState.STOPPED));
+		}
+//		ConsoleView console = new ConsoleView();
+//		console.open();
+//		console.terminateConsole();
+//		new ServersView2().activate();
+//		AbstractWait.sleep(TimePeriod.DEFAULT);
     }
 
 }
