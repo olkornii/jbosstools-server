@@ -265,7 +265,7 @@ public class JMXServerConnectionAutoDeployDisableTest extends JMXServerTestTempl
     	
     }
     
-    public void stopsServer() {
+    public void stopServer() {
     	new ServersView2().activate();
     	server.select();
 		try {
