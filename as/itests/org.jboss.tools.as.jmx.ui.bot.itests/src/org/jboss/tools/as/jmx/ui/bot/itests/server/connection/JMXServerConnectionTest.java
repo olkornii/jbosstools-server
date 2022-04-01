@@ -47,9 +47,7 @@ public class JMXServerConnectionTest extends JMXServerTestTemplate {
 
 	@Before
 	public void setupServer() {
-//		String value = Preferences.get("org.eclipse.debug.ui", "Console.limitConsoleOutput");
 		Preferences.set("org.eclipse.debug.ui", "Console.limitConsoleOutput", "false");
-//		String newValue = Preferences.get("org.eclipse.debug.ui", "Console.limitConsoleOutput");
 		
 		setUpView();
 
@@ -79,16 +77,18 @@ public class JMXServerConnectionTest extends JMXServerTestTemplate {
     public void stopServer() {
     	new ServersView2().activate();
     	server.select();
-		try {
-			new ContextMenuItem("Stop").select();
-			new WaitWhile(new JobIsRunning());
-			new WaitUntil(new ServerHasState(server, ServerState.STOPPED), TimePeriod.LONG);
-		} catch (WaitTimeoutExpiredException ex){
-			//try it once again
-			new ContextMenuItem("Stop").select();
-			new WaitWhile(new JobIsRunning());
-			new WaitUntil(new ServerHasState(server, ServerState.STOPPED), TimePeriod.LONG);
-		}
+    	if(server.getLabel().getState().isRunningState()) {
+			try {
+				new ContextMenuItem("Stop").select();
+				new WaitWhile(new JobIsRunning());
+				new WaitUntil(new ServerHasState(server, ServerState.STOPPED), TimePeriod.LONG);
+			} catch (WaitTimeoutExpiredException ex){
+				//try it once again
+				new ContextMenuItem("Stop").select();
+				new WaitWhile(new JobIsRunning());
+				new WaitUntil(new ServerHasState(server, ServerState.STOPPED), TimePeriod.LONG);
+			}
+    	}
     }
 
 }
