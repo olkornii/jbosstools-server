@@ -1,5 +1,5 @@
 /******************************************************************************* 
- * Copyright (c) 2018 Red Hat, Inc. 
+ * Copyright (c) 201/8 Red Hat, Inc. 
  * Distributed under license by Red Hat, Inc. All rights reserved. 
  * This program is made available under the terms of the 
  * Eclipse Public License v1.0 which accompanies this distribution, 
@@ -21,11 +21,11 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(RedDeerSuite.class)
 @SuiteClasses({
-//	JMXUITest.class,
-//	JMXLocalConnectionTest.class,
-//	JMXServerConnectionTest.class,
-	JMXServerConnectionAutoDeployDisableTest.class
-//	RemoteServerJMXConnectionTest.class
+	JMXUITest.class,
+	JMXLocalConnectionTest.class,
+	JMXServerConnectionTest.class,
+	JMXServerConnectionAutoDeployDisableTest.class,
+	RemoteServerJMXConnectionTest.class
 })
 public class JMXAllTests {
 }

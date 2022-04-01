@@ -271,18 +271,13 @@ public class JMXServerConnectionAutoDeployDisableTest extends JMXServerTestTempl
 		try {
 			new ContextMenuItem("Stop").select();
 			new WaitWhile(new JobIsRunning());
-			new WaitUntil(new ServerHasState(server, ServerState.STOPPED));
+			new WaitUntil(new ServerHasState(server, ServerState.STOPPED), TimePeriod.LONG);
 		} catch (WaitTimeoutExpiredException ex){
 			//try it once again
 			new ContextMenuItem("Stop").select();
 			new WaitWhile(new JobIsRunning());
-			new WaitUntil(new ServerHasState(server, ServerState.STOPPED));
+			new WaitUntil(new ServerHasState(server, ServerState.STOPPED), TimePeriod.LONG);
 		}
-//		ConsoleView console = new ConsoleView();
-//		console.open();
-//		console.terminateConsole();
-//		new ServersView2().activate();
-//		AbstractWait.sleep(TimePeriod.DEFAULT);
     }
 
 }

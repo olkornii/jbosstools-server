@@ -21,6 +21,7 @@ import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
 import org.eclipse.reddeer.direct.preferences.Preferences;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersViewEnums.ServerState;
+import org.eclipse.reddeer.eclipse.condition.ServerHasState;
 import org.eclipse.reddeer.eclipse.ui.console.ConsoleView;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersView2;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersViewException;
@@ -29,7 +30,9 @@ import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.requirements.server.ServerRequirementState;
 import org.eclipse.reddeer.swt.condition.ShellIsAvailable;
 import org.eclipse.reddeer.swt.impl.button.PushButton;
+import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
 import org.eclipse.reddeer.swt.impl.shell.DefaultShell;
+import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
 import org.eclipse.swt.widgets.Shell;
 import org.hamcrest.core.IsNull;
 import org.jboss.ide.eclipse.as.reddeer.server.requirement.ServerRequirement.JBossServer;
@@ -111,11 +114,18 @@ public class RemoteServerJMXConnectionTest extends JMXServerTestTemplate {
 	}
 	
     public void stopServer() {
-		ConsoleView console = new ConsoleView();
-		console.open();
-		console.terminateConsole();
-		new ServersView2().activate();
-		AbstractWait.sleep(TimePeriod.DEFAULT);
+    	new ServersView2().activate();
+    	server.select();
+		try {
+			new ContextMenuItem("Stop").select();
+			new WaitWhile(new JobIsRunning());
+			new WaitUntil(new ServerHasState(server, ServerState.STOPPED), TimePeriod.LONG);
+		} catch (WaitTimeoutExpiredException ex){
+			//try it once again
+			new ContextMenuItem("Stop").select();
+			new WaitWhile(new JobIsRunning());
+			new WaitUntil(new ServerHasState(server, ServerState.STOPPED), TimePeriod.LONG);
+		}
     }
 
 }
