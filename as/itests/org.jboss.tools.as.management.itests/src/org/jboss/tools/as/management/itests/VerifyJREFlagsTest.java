@@ -32,11 +32,9 @@ public class VerifyJREFlagsTest extends TestCase {
 			assertNotNull(home);
 			JREParameterUtils.verifyJava8HomeSet();
 			JREParameterUtils.verifyJava11HomeSet();
-			JREParameterUtils.verifyJava17HomeSet();
 		} else {
 			JREParameterUtils.verifyJava8HomeSet();
 			JREParameterUtils.verifyJava11HomeSet();
-			JREParameterUtils.verifyJava17HomeSet();
 		}
 	}
 }
