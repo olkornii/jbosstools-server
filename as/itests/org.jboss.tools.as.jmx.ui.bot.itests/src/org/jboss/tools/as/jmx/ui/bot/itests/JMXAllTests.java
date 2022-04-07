@@ -21,11 +21,11 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(RedDeerSuite.class)
 @SuiteClasses({
-//	JMXUITest.class,
-//	JMXLocalConnectionTest.class,
-	JMXServerConnectionTest.class
-//	JMXServerConnectionAutoDeployDisableTest.class,
-//	RemoteServerJMXConnectionTest.class
+	JMXUITest.class,
+	JMXLocalConnectionTest.class,
+	JMXServerConnectionTest.class,
+	JMXServerConnectionAutoDeployDisableTest.class,
+	RemoteServerJMXConnectionTest.class
 })
 public class JMXAllTests {
 }
