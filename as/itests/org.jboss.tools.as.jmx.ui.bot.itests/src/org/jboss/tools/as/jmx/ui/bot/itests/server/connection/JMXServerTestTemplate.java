@@ -17,6 +17,7 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 
+import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
@@ -91,7 +92,10 @@ public abstract class JMXServerTestTemplate extends JMXTestTemplate {
 		if (serverConnection == null) {
 			fail("There was no JMX connection item defined under server: " + serverName);
 		}
+		new ServersView2().activate();
+		
 		serverConnection.select();
+		
 		serverConnection.getLabel().getState().equals(JMXConnectionState.DISCONNECTED);
 
 		startServer();
