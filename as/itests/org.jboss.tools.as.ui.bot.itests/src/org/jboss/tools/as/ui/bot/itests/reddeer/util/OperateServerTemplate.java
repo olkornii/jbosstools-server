@@ -30,6 +30,7 @@ import org.eclipse.reddeer.eclipse.ui.console.ConsoleView;
 import org.eclipse.reddeer.eclipse.wst.server.ui.RuntimePreferencePage;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.Server;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersView2;
+import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersViewEnums.ServerState;
 import org.eclipse.reddeer.swt.api.Shell;
 import org.eclipse.reddeer.swt.condition.ShellIsAvailable;
 import org.eclipse.reddeer.swt.impl.button.PushButton;
@@ -154,10 +155,18 @@ public class OperateServerTemplate {
 
 	public void restartServer() {
 		try {
-			serversView.getServer(getServerName()).restart();
+//			serversView.getServer(getServerName()).restart(); 
+			new ContextMenuItem("Restart").select(); 
+			new WaitWhile(new JobIsRunning());
+			new WaitUntil(new ServerHasState("Starting"), TimePeriod.LONG);
+			new WaitUntil(new ServerHasState("Started"), TimePeriod.LONG);
 		} catch (WaitTimeoutExpiredException ex){
 			//try it once again
-			serversView.getServer(getServerName()).restart();
+//			serversView.getServer(getServerName()).restart();
+			new ContextMenuItem("Restart").select();
+			new WaitWhile(new JobIsRunning());
+			new WaitUntil(new ServerHasState("Starting"), TimePeriod.LONG);
+			new WaitUntil(new ServerHasState("Started"), TimePeriod.LONG);
 		}
 		tryServerProcessNotTerminated();
 		final String state = "Started";
@@ -172,17 +181,25 @@ public class OperateServerTemplate {
 
 	public void stopServer() {
 		new WaitUntil(new JobIsRunning(),TimePeriod.LONG, false);
+		serversView.open();
 		serversView.getServer(getServerName()).select();
 		try {
 			serversView.getServer(getServerName()).setServerStateChangeTimeout(TimePeriod.LONG);
-			serversView.getServer(getServerName()).stop();
+//			serversView.getServer(getServerName()).stop();
+			new ContextMenuItem("Stop").select();
+			new WaitWhile(new JobIsRunning());
+			new WaitUntil(new ServerHasState("Stopped"), TimePeriod.LONG);
 		} catch (WaitTimeoutExpiredException ex) {
 			//try to stop server once again
 			serversView.open();
-			serversView.getServer(getServerName()).setServerStateChangeTimeout(TimePeriod.LONG);
+//			serversView.getServer(getServerName()).setServerStateChangeTimeout(TimePeriod.LONG);
 			serversView.getServer(getServerName()).select();
-			new ContextMenuItem(new RegexMatcher("Stop.*")).select();
-			new WaitUntil(new JobIsRunning(),TimePeriod.LONG);
+//			new ContextMenuItem(new RegexMatcher("Stop.*")).select();
+//			new WaitUntil(new JobIsRunning(),TimePeriod.LONG);
+			
+			new ContextMenuItem("Stop").select();
+			new WaitWhile(new JobIsRunning());
+			new WaitUntil(new ServerHasState("Stopped"), TimePeriod.LONG);
 		}
 		tryServerProcessNotTerminated();
 		final String state = "Stopped";
