@@ -24,9 +24,9 @@ import org.junit.runners.Suite;
 
 @RunWith(RedDeerSuite.class)
 @Suite.SuiteClasses({ 
-	InvalidCredentialProductDownloadTest.class, // need to rework
+//	InvalidCredentialProductDownloadTest.class, // need to rework
 //	ServerRuntimesTest.class,
-	VariousProjectsArchiving.class,
+//	VariousProjectsArchiving.class,
 	DeployingArchiveTest.class
 //	RuntimeDetectionDuplicatesTest.class,
 //	ServerAdaptersTest.class,
