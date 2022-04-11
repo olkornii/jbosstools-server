@@ -115,7 +115,6 @@ public class Archive {
 	
 	public ArchivePublishDialog editPublishSettings() {
 		archive.select();
-		new DefaultShell().setFocus();
 		new ContextMenuItem("Edit publish settings...").select();
 		return new ArchivePublishDialog();
 	}
