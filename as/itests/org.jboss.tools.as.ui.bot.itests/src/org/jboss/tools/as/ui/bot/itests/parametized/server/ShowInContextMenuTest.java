@@ -82,28 +82,28 @@ public class ShowInContextMenuTest {
 	public void cleanUp() {
 		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 		
-		if(server.getLabel().getState().isRunningState()) {
-			try {
-				new ServersView2().activate();
-				server.stop();
-			} catch (WaitTimeoutExpiredException ex) {
-				//try to stop server once again
-				new ServersView2().activate();
-				server.stop();
-			}
-		}
+//		if(server.getLabel().getState().isRunningState()) {
+//			try {
+//				new ServersView2().activate();
+//				server.stop();
+//			} catch (WaitTimeoutExpiredException ex) {
+//				//try to stop server once again
+//				new ServersView2().activate();
+//				server.stop();
+//			}
+//		}
 		
-//		if(server.getLabel().getState().isRunningState()) {
-//			new ConsoleView().activate();
-//			new ConsoleView().terminateConsole();
-//			new ServersView2().activate();
-//		}
-//		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
-//		if(server.getLabel().getState().isRunningState()) {
-//			new ConsoleView().activate();
-//			new ConsoleView().terminateConsole();
-//			new ServersView2().activate();
-//		}
+		if(server.getLabel().getState().isRunningState()) {
+			new ConsoleView().activate();
+			new ConsoleView().terminateConsole();
+			new ServersView2().activate();
+		}
+		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
+		if(server.getLabel().getState().isRunningState()) {
+			new ConsoleView().activate();
+			new ConsoleView().terminateConsole();
+			new ServersView2().activate();
+		}
 		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 		sv.close();
 		try {
