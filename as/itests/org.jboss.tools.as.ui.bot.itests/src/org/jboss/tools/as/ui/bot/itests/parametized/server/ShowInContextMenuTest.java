@@ -15,6 +15,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.eclipse.reddeer.common.exception.WaitTimeoutExpiredException;
+import org.eclipse.reddeer.common.matcher.RegexMatcher;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
@@ -34,6 +36,7 @@ import org.eclipse.reddeer.swt.condition.PageIsLoaded;
 import org.eclipse.reddeer.swt.impl.browser.InternalBrowser;
 import org.eclipse.reddeer.swt.impl.ctab.DefaultCTabFolder;
 import org.eclipse.reddeer.swt.impl.menu.ContextMenu;
+import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
 import org.eclipse.reddeer.swt.impl.toolbar.DefaultToolBar;
 import org.eclipse.reddeer.swt.impl.toolbar.DefaultToolItem;
 import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
@@ -78,22 +81,29 @@ public class ShowInContextMenuTest {
 	@After
 	public void cleanUp() {
 		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
+		
 		if(server.getLabel().getState().isRunningState()) {
-			new ConsoleView().activate();
-			new ConsoleView().terminateConsole();
-			new ServersView2().activate();
+			try {
+				new ServersView2().activate();
+				server.stop();
+			} catch (WaitTimeoutExpiredException ex) {
+				//try to stop server once again
+				new ServersView2().activate();
+				server.stop();
+			}
 		}
-//		new ConsoleView().terminateConsole();
-//		new ServersView().
-//		new DefaultCTabFolder();
-//		new DefaultToolItem("Stop the server").click();
-		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
-		if(server.getLabel().getState().isRunningState()) {
-//			server.stop();
-			new ConsoleView().activate();
-			new ConsoleView().terminateConsole();
-			new ServersView2().activate();
-		}
+		
+//		if(server.getLabel().getState().isRunningState()) {
+//			new ConsoleView().activate();
+//			new ConsoleView().terminateConsole();
+//			new ServersView2().activate();
+//		}
+//		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
+//		if(server.getLabel().getState().isRunningState()) {
+//			new ConsoleView().activate();
+//			new ConsoleView().terminateConsole();
+//			new ServersView2().activate();
+//		}
 		new WaitWhile(new JobIsRunning(), TimePeriod.LONG);
 		sv.close();
 		try {
