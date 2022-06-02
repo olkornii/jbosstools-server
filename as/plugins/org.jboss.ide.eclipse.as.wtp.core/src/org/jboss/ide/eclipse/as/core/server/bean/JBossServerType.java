@@ -70,6 +70,10 @@ public class JBossServerType extends ServerBeanType implements IJBossToolingCons
 	public static final JBossServerType EAP74 = new ServerBeanTypeEAP7Plus("7.4", IJBossToolingConstants.SERVER_EAP_74);
 	public static final JBossServerType WILDFLY240 = new ServerBeanTypeWildfly10Plus("24.0", IJBossToolingConstants.SERVER_WILDFLY_240, "main");
 	public static final JBossServerType WILDFLY240_WEB = new ServerBeanTypeWildfly10PlusWeb("24.0", IJBossToolingConstants.SERVER_WILDFLY_240);
+	public static final JBossServerType WILDFLY250 = new ServerBeanTypeWildfly10Plus("25.0", IJBossToolingConstants.SERVER_WILDFLY_250, "main");
+	public static final JBossServerType WILDFLY250_WEB = new ServerBeanTypeWildfly10PlusWeb("25.0", IJBossToolingConstants.SERVER_WILDFLY_250);
+	public static final JBossServerType WILDFLY260 = new ServerBeanTypeWildfly10Plus("26.0", IJBossToolingConstants.SERVER_WILDFLY_260, "main");
+	public static final JBossServerType WILDFLY260_WEB = new ServerBeanTypeWildfly10PlusWeb("26.0", IJBossToolingConstants.SERVER_WILDFLY_260);
 	// AUTOGEN_SERVER_ADAPTER_CHUNK
 
 
