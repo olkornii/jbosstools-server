@@ -100,6 +100,8 @@ public class TestConstants {
 		serverTypeToHome.put(IJBossToolingConstants.SERVER_WILDFLY_230, JBOSS_WF_230_HOME);
 		serverTypeToHome.put(IJBossToolingConstants.SERVER_EAP_74, JBOSS_EAP_74_HOME);
 		serverTypeToHome.put(IJBossToolingConstants.SERVER_WILDFLY_240, JBOSS_WF_240_HOME);
+		serverTypeToHome.put(IJBossToolingConstants.SERVER_WILDFLY_250, JBOSS_WF_250_HOME);
+		serverTypeToHome.put(IJBossToolingConstants.SERVER_WILDFLY_260, JBOSS_WF_260_HOME);
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		// NEW_SERVER_ADAPTER
 	}
