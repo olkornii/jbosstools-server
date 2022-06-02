@@ -55,6 +55,8 @@ public class TestConstants {
 	public static final String JBOSS_WF_230_HOME = System.getProperty("jbosstools.test.jboss.home.23.0", "C:\\apps\\jboss\\jboss-wildfly-23.0.0.GA\\");
 	public static final String JBOSS_EAP_74_HOME = System.getProperty("jbosstools.test.jboss.home.eap.7.4", "C:\\apps\\jboss\\jboss-eap-7.4.0.GA\\");
 	public static final String JBOSS_WF_240_HOME = System.getProperty("jbosstools.test.jboss.home.24.0", "C:\\apps\\jboss\\jboss-wildfly-24.0.0.GA\\");
+	public static final String JBOSS_WF_250_HOME = System.getProperty("jbosstools.test.jboss.home.25.0", "C:\\apps\\jboss\\jboss-wildfly-25.0.0.GA\\");
+	public static final String JBOSS_WF_260_HOME = System.getProperty("jbosstools.test.jboss.home.26.0", "C:\\apps\\jboss\\jboss-wildfly-26.0.0.GA\\");
 	// AUTOGEN_SERVER_ADAPTER_CHUNK
 	// NEW_SERVER_ADAPTER
 
