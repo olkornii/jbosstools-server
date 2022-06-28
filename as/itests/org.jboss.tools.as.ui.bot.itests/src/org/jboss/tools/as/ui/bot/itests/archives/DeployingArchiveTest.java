@@ -21,6 +21,7 @@ import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.ModifyModulesDialog;
 import org.eclipse.reddeer.eclipse.wst.server.ui.wizard.ModifyModulesPage;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
 import org.eclipse.reddeer.swt.api.TreeItem;
+import org.eclipse.reddeer.swt.impl.shell.DefaultShell;
 import org.eclipse.reddeer.swt.impl.tree.DefaultTree;
 import org.jboss.ide.eclipse.archives.ui.test.bot.ArchivesTestBase;
 import org.jboss.tools.archives.reddeer.archives.ui.ArchivePublishDialog;
@@ -119,6 +120,7 @@ public class DeployingArchiveTest extends ArchivesTestBase {
 	}
 	
 	private void fillPublishDialog(ArchivePublishDialog dialog, boolean alwaysPublish, boolean autodeploy) {
+		new DefaultShell().setFocus();
 		if (!alwaysPublish && autodeploy) {
 			throw new IllegalArgumentException(
 					"Cannot autodeploy without always publish option checked");

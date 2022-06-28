@@ -104,7 +104,7 @@ public class Archive {
 	}
 	
 	public ArchivePublishDialog publishToServer() {
-		archive.select();
+		activateAndSelect();
 		new ContextMenuItem("Publish To Server").select();
 		if (new DefaultShell().getText().equals("Archive Publish Settings")) {
 			return new ArchivePublishDialog();
@@ -114,7 +114,7 @@ public class Archive {
 	}
 	
 	public ArchivePublishDialog editPublishSettings() {
-		archive.select();
+		activateAndSelect();
 		new ContextMenuItem("Edit publish settings...").select();
 		return new ArchivePublishDialog();
 	}
