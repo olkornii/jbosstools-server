@@ -22,7 +22,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		<jbosstools.test.jboss.home.23.0>${requirementsDirectory}/wildfly-23.0.2.Final</jbosstools.test.jboss.home.23.0>
 		<jbosstools.test.jboss.home.24.0>${requirementsDirectory}/wildfly-24.0.0.Final</jbosstools.test.jboss.home.24.0>
 		<jbosstools.test.jboss.home.25.0>${requirementsDirectory}/wildfly-25.0.1.Final</jbosstools.test.jboss.home.25.0>
-		<jbosstools.test.jboss.home.26.0>${requirementsDirectory}/wildfly-26.0.0.Final</jbosstools.test.jboss.home.26.0>
+		<jbosstools.test.jboss.home.26.0>${requirementsDirectory}/wildfly-26.1.1.Final</jbosstools.test.jboss.home.26.0>
 		<jbosstools.test.jboss.home.eap.7.0>${requirementsDirectory}/jboss-eap-7.0</jbosstools.test.jboss.home.eap.7.0>
 		<jbosstools.test.jboss.home.eap.7.1>${requirementsDirectory}/jboss-eap-7.1</jbosstools.test.jboss.home.eap.7.1>
 		<jbosstools.test.jboss.home.eap.7.2>${requirementsDirectory}/jboss-eap-7.2</jbosstools.test.jboss.home.eap.7.2>
@@ -176,14 +176,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 								</configuration>
 							</execution>
 							<execution>
-								<id>install-eap-7.4.0</id>
+								<id>install-eap-7.4.6</id>
 								<phase>pre-integration-test</phase>
 								<goals>
 									<goal>wget</goal>
 								</goals>
 								<configuration>
-									<url>http://download-node-02.eng.bos.redhat.com/released/jboss/eap7/7.4.0/jboss-eap-7.4.0.zip</url>
-									<md5>feddc39d58a29b1ed9791121a77e8b49</md5>
+									<url>http://download-node-02.eng.bos.redhat.com/released/jboss/eap7/7.4.6/jboss-eap-7.4.6.zip</url>
+									<md5>d5c284f2ad43335873697cdee622572c</md5>
 									<unpack>true</unpack>
 									<skip>${skipTestsWithPrivateRequirements}</skip>
 								</configuration>
@@ -228,14 +228,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 								</configuration>
 							</execution>
 							<execution>
-								<id>install-wildfly-26.0.0.Final</id>
+								<id>install-wildfly-26.1.1.Final</id>
 								<phase>pre-integration-test</phase>
 								<goals>
 									<goal>wget</goal>
 								</goals>
 								<configuration>
-									<url>https://github.com/wildfly/wildfly/releases/download/26.0.0.Final/wildfly-26.0.0.Final.zip</url>
-									<sha1>9b0ad3a6434750e4bf8def46aa0dbe19dd699b37</sha1>
+									<url>https://github.com/wildfly/wildfly/releases/download/26.1.1.Final/wildfly-26.1.1.Final.zip</url>
+									<sha1>8c76263c93ee4fa96cde1d7acca68b57a99b1df0</sha1>
 									<unpack>true</unpack>
 									<skip>${skipTestsOrITests}</skip>
 								</configuration>
