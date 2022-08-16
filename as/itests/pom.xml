@@ -19,7 +19,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
 	<properties>
 		<enforceFailOnUIDependencyInCore>false</enforceFailOnUIDependencyInCore>
-		<jbosstools.test.jboss.home.23.0>${requirementsDirectory}/wildfly-23.0.0.Final</jbosstools.test.jboss.home.23.0>
+		<jbosstools.test.jboss.home.23.0>${requirementsDirectory}/wildfly-23.0.2.Final</jbosstools.test.jboss.home.23.0>
 		<jbosstools.test.jboss.home.24.0>${requirementsDirectory}/wildfly-24.0.0.Final</jbosstools.test.jboss.home.24.0>
 		<jbosstools.test.jboss.home.25.0>${requirementsDirectory}/wildfly-25.0.1.Final</jbosstools.test.jboss.home.25.0>
 		<jbosstools.test.jboss.home.26.0>${requirementsDirectory}/wildfly-26.0.0.Final</jbosstools.test.jboss.home.26.0>
@@ -189,7 +189,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 								</configuration>
 							</execution>
 							<execution>
-								<id>install-wildfly-23.0.0.Final</id>
+								<id>install-wildfly-23.0.2.Final</id>
 								<phase>pre-integration-test</phase>
 								<goals>
 									<goal>wget</goal>
