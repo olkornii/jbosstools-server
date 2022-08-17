@@ -18,9 +18,9 @@ import org.junit.runners.Suite;
 
 @RunWith(RedDeerSuite.class)
 @Suite.SuiteClasses({ 
-	SingleServerRuntimeTest.class,
-	SingleServerDirectoryStructureTest.class,
-	SingleServerAdaptersTest.class,
+	SingleServerRuntimeTest.class
+//	SingleServerDirectoryStructureTest.class,
+//	SingleServerAdaptersTest.class,
 })
 public class EAPTestsSuite {
 
