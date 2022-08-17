@@ -19,11 +19,13 @@ import org.jboss.tools.as.ui.bot.itests.parametized.server.ServerAdaptersTest;
 import org.jboss.tools.as.ui.bot.itests.parametized.server.ServerActualJavaTest;
 import org.jboss.tools.as.ui.bot.itests.parametized.server.ServerRuntimesTest;
 import org.jboss.tools.as.ui.bot.itests.parametized.server.ShowInContextMenuTest;
+import org.jboss.tools.as.ui.bot.itests.server.SingleServerRuntimeTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(RedDeerSuite.class)
 @Suite.SuiteClasses({ 
+//	SingleServerRuntimeTest.class
 	InvalidCredentialProductDownloadTest.class,
 	ServerRuntimesTest.class,
 	VariousProjectsArchiving.class,
