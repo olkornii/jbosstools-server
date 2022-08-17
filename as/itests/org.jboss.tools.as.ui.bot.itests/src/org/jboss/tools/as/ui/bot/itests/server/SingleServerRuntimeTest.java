@@ -53,10 +53,11 @@ import org.junit.runners.Parameterized.UseParametersRunnerFactory;
  */
 
 @RunWith(RedDeerSuite.class)
+@JRE(cleanup = true)
+@UseParametersRunnerFactory(ParameterizedRequirementsRunnerFactory.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // first acquireAndDetect, then detect, then operate
 @DisableSecureStorage
 @UseInternalBrowser
-@UseParametersRunnerFactory(ParameterizedRequirementsRunnerFactory.class)
 public class SingleServerRuntimeTest {
 
 	private String location;
@@ -69,8 +70,8 @@ public class SingleServerRuntimeTest {
 	}
 	
 	public SingleServerRuntimeTest() {
-		location = System.getProperty("jbosstools.test.single.runtime.location");
-		serverIdentification = System.getProperty("jbosstools.test.single.runtime.server.identification");
+		location = "/home/olkornii/test_eap_location/jboss-eap-7.4"; //System.getProperty("jbosstools.test.single.runtime.location");
+		serverIdentification = "Red Hat JBoss EAP 7.4.6"; //System.getProperty("jbosstools.test.single.runtime.server.identification");
 	}
 
 	protected File getDownloadPath() {
