@@ -109,14 +109,31 @@ public class SingleServerRuntimeTest {
 
 	@Test
 	public void operateDeploy() {
+		try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// Right now there's only 2 versions of each, and one is only for very old app
 		// servers
 		// So we'll use the JB7+ / WF / EAP5+ strings
+//		String undepString = ServerRuntimeUIConstants.getUndeployString(runtimeString, "jsp-project", ".war");
 		String undepString = ServerRuntimeUIConstants.getUndeployString(serverIdentification,
 				"jsp-project", ".war");
+//		String depString = ServerRuntimeUIConstants.getDeployString(runtimeString, "jsp-project", ".war");
 		String depString = ServerRuntimeUIConstants.getDeployString(serverIdentification, "jsp-project",
 				".war");
 
+		System.out.println(undepString);
+		System.out.println(depString);
+		try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		checkCountAndGetServerName();
 		OperateServerTemplate operate = new OperateServerTemplate(serverName);
 		operate.setUp();
