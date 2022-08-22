@@ -53,7 +53,7 @@ import org.junit.runners.Parameterized.UseParametersRunnerFactory;
  */
 
 @RunWith(RedDeerSuite.class)
-@JRE(cleanup = true)
+@JRE(cleanup = true, setDefault = true)
 @UseParametersRunnerFactory(ParameterizedRequirementsRunnerFactory.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // first acquireAndDetect, then detect, then operate
 @DisableSecureStorage
