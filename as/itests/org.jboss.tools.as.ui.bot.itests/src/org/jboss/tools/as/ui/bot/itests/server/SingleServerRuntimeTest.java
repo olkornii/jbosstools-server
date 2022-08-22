@@ -66,7 +66,7 @@ public class SingleServerRuntimeTest {
 
 	@RequirementRestriction
 	public static RequirementMatcher getRestrictionMatcher() {
-	  return new RequirementMatcher(JRE.class, "version", new VersionMatcher("1.8"));
+	  return new RequirementMatcher(JRE.class, "version", new VersionMatcher("11"));
 	}
 	
 	public SingleServerRuntimeTest() {
