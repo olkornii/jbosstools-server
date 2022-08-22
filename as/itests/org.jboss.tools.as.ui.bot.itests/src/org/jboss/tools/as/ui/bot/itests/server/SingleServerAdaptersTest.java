@@ -47,7 +47,7 @@ public class SingleServerAdaptersTest extends ServerAdaptersTest {
 
 	@RequirementRestriction
 	public static RequirementMatcher getRestrictionMatcher() {
-	  return new RequirementMatcher(JRE.class, "version", new VersionMatcher("11"));
+	  return new RequirementMatcher(JRE.class, "version", new VersionMatcher("1.8"));
 	}
 
 	public SingleServerAdaptersTest(String server) {
