@@ -116,6 +116,7 @@ public class Archive {
 	public ArchivePublishDialog editPublishSettings() {
 		archive.select();
 //		new ContextMenuItem("Edit publish settings...").select();
+		System.out.println("Open Edit publish settings now!=========================");
 		try {
 			Thread.sleep(30000);
 		} catch (InterruptedException e) {
