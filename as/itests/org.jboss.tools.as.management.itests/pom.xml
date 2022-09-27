@@ -11,6 +11,7 @@
 	<packaging>eclipse-test-plugin</packaging>
 	
 	<properties>
-		<systemProperties>--add-opens java.base/java.security=ALL-UNNAMED</systemProperties>
+		<additionalProperties>--add-opens java.base/java.security=ALL-UNNAMED</additionalProperties>
+		<systemProperties>${additionalProperties}</systemProperties>
 	</properties>
 </project>
