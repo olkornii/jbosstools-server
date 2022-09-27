@@ -12,6 +12,5 @@
 	
 	<properties>
 		<additionalProperties>--add-opens java.base/java.security=ALL-UNNAMED</additionalProperties>
-		<systemProperties>${additionalProperties}</systemProperties>
 	</properties>
 </project>
