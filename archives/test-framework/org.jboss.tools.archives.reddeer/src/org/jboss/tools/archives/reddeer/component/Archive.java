@@ -124,7 +124,7 @@ public class Archive {
             e.printStackTrace();
         }
 		
-		new ContextMenuItem("Edit publish settings...").select();
+//		new ContextMenuItem("Edit publish settings...").select();
 		return new ArchivePublishDialog();
 	}
 	
