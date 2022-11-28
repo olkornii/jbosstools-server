@@ -16,6 +16,8 @@ import java.io.File;
 import java.util.List;
 
 import org.eclipse.reddeer.common.util.Display;
+import org.eclipse.reddeer.common.wait.AbstractWait;
+import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.direct.preferences.Preferences;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.Server;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersView2;
@@ -124,6 +126,7 @@ public class SingleServerRuntimeTest {
 		JBossServer jbs = djsppt.getServer(serverName);
 		djsppt.importProject("jsp-project", "projects/jsp-project.zip", serverName + " Runtime");
 
+		AbstractWait.sleep(TimePeriod.VERY_LONG);
 		djsppt.deployProject("jsp-project", serverName, depString);
 
 		// Now try a hot-deploy
