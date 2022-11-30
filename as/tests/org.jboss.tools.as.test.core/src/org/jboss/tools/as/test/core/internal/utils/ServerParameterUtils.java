@@ -39,7 +39,7 @@ public class ServerParameterUtils {
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		TESTED_SERVERS.add(IJBossToolingConstants.SERVER_EAP_73);
 		TESTED_SERVERS.add(IJBossToolingConstants.SERVER_EAP_74);
-		TESTED_SERVERS.add(IJBossToolingConstants.SERVER_EAP_80);
+//		TESTED_SERVERS.add(IJBossToolingConstants.SERVER_EAP_80);
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		// NEW_SERVER_ADAPTER Add the new runtime constant above this line
 	}
@@ -67,8 +67,8 @@ public class ServerParameterUtils {
 	public static final String SKIP_PRIVATE_REQUIREMENTS = 
 			"org.jboss.tools.tests.skipPrivateRequirements";
 	public static boolean skipPrivateRequirements() {
-        if( Boolean.getBoolean(SKIP_PRIVATE_REQUIREMENTS))
-            return true;
+//        if( Boolean.getBoolean(SKIP_PRIVATE_REQUIREMENTS))
+//            return true;
         return false;
 	}
 	
