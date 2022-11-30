@@ -25,7 +25,7 @@ public class ParameterUtils {
 	public static final String JBOSS_EAP_72_HOME = TestConstants.JBOSS_EAP_72_HOME;
 	public static final String JBOSS_EAP_73_HOME = TestConstants.JBOSS_EAP_73_HOME;
 	public static final String JBOSS_EAP_74_HOME = TestConstants.JBOSS_EAP_74_HOME;
-	public static final String JBOSS_EAP_80_HOME = TestConstants.JBOSS_EAP_80_HOME;
+//	public static final String JBOSS_EAP_80_HOME = TestConstants.JBOSS_EAP_80_HOME;
 	// AUTOGEN_SERVER_ADAPTER_CHUNK
 	public static final String JBOSS_WF_230_HOME = TestConstants.JBOSS_WF_230_HOME;
 	public static final String JBOSS_WF_240_HOME = TestConstants.JBOSS_WF_240_HOME;
@@ -37,7 +37,7 @@ public class ParameterUtils {
 		serverHomeToRuntimeType.put(JBOSS_EAP_72_HOME, IJBossToolingConstants.EAP_72);
 		serverHomeToRuntimeType.put(JBOSS_EAP_73_HOME, IJBossToolingConstants.EAP_73);
 		serverHomeToRuntimeType.put(JBOSS_EAP_74_HOME, IJBossToolingConstants.EAP_74);
-		serverHomeToRuntimeType.put(JBOSS_EAP_80_HOME, IJBossToolingConstants.EAP_80);
+//		serverHomeToRuntimeType.put(JBOSS_EAP_80_HOME, IJBossToolingConstants.EAP_80);
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		serverHomeToRuntimeType.put(JBOSS_WF_230_HOME, IJBossToolingConstants.WILDFLY_230);
 		serverHomeToRuntimeType.put(JBOSS_WF_240_HOME, IJBossToolingConstants.WILDFLY_240);
@@ -69,14 +69,14 @@ public class ParameterUtils {
 		paths.add(JBOSS_WF_230_HOME);
 		paths.add(JBOSS_WF_240_HOME);
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
-		if( !skipReqs ) {
+//		if( !skipReqs ) {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 			paths.add(JBOSS_EAP_72_HOME);
 			paths.add(JBOSS_EAP_73_HOME);
 			paths.add(JBOSS_EAP_74_HOME);
-			paths.add(JBOSS_EAP_80_HOME);
+//			paths.add(JBOSS_EAP_80_HOME);
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-		}
+//		}
 		return paths.toArray(new String[paths.size()]);
 	}
 	
@@ -96,13 +96,13 @@ public class ParameterUtils {
 		paths.add(JBOSS_WF_230_HOME);
 		paths.add(JBOSS_WF_240_HOME);
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
-		if( !skipReqs ) {
-			// AUTOGEN_SERVER_ADAPTER_CHUNK
+//		if( !skipReqs ) {
+//			 AUTOGEN_SERVER_ADAPTER_CHUNK
 			paths.add(JBOSS_EAP_73_HOME);
 			paths.add(JBOSS_EAP_74_HOME);
-			paths.add(JBOSS_EAP_80_HOME);
+//			paths.add(JBOSS_EAP_80_HOME);
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-		}
+//		}
 		return paths.toArray(new String[paths.size()]);
 	}
 	
