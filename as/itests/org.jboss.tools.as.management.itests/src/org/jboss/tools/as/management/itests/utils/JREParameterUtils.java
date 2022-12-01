@@ -51,7 +51,10 @@ public class JREParameterUtils extends Assert {
 		ServerBeanLoader sb = new ServerBeanLoader(new File(serverHome));
 		String version = sb.getFullServerVersion();
 		System.out.println("**** ____  server version is " + version);
-		return getJavaHome(serverHome, JRE8_SYSPROP, "JavaSE-1.8");
+		
+		String JRE_SYSPROP = version.contains("8.") ? JRE11_SYSPROP : JRE8_SYSPROP;
+		String JAVASE = version.contains("8.") ? "JavaSE-11" : "JavaSE-1.8";
+		return getJavaHome(serverHome, JRE_SYSPROP, JAVASE);
 	}
 	
 	public static String getJavaHome(String serverHome, String sysprop, String javaVersion) {
