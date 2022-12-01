@@ -65,6 +65,7 @@ public class ServerRuntimeUIConstants {
 	public static final String WF_24_0_0 = "WildFly 24.0.0 Final";
 	public static final String WF_25_0_1 = "WildFly 25.0.1 Final";
 	public static final String WF_26_1_1 = "WildFly 26.1.1 Final";
+	public static final String WF_27_0_0 = "WildFly 27.0.0 Final";
 	// AUTOGEN_SERVER_ADAPTER_CHUNK
 
 
@@ -92,9 +93,9 @@ public class ServerRuntimeUIConstants {
 			WF_800,	WF_810,	WF_820,	WF_821,	WF_900,WF_901,	WF_902,	WF_10_0_0,	
 			WF_10_1_0,	WF_11_0_0,	WF_12_0_0,	WF_13_0_0,	WF_14_0_0,	WF_15_0_0,	
 			WF_16_0_0,	WF_17_0_0,	WF_18_0_0,	WF_19_0_0,	WF_20_0_0,	WF_21_0_0,	
-			WF_22_0_0,	WF_23_0_2,	WF_24_0_0,	WF_25_0_1,	WF_26_1_1,	
+			WF_22_0_0,	WF_23_0_2,	WF_24_0_0,	WF_25_0_1,	WF_26_1_1,  WF_27_0_0,
 			JBEAP_610,	JBEAP_620,	JBEAP_630,	JBEAP_640,	JBEAP_700,	JBEAP_710,	
-			JBEAP_720,	JBEAP_730,	JBEAP_740,	JBEAP_746,	JBEAP_800
+			JBEAP_720,	JBEAP_730,	JBEAP_740,	JBEAP_746
 	};
 
 	// Manual Downloads
@@ -105,16 +106,16 @@ public class ServerRuntimeUIConstants {
 	
 	public static final String[] LATEST_MAJORS_FREE_DOWNLOADS = new String[] {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-			WF_25_0_1,
 			WF_26_1_1,
+			WF_27_0_0,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	};
 
 	
 	public static final String[] FREE_DOWNLOADS = new String[] {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-			WF_25_0_1,
-			WF_26_1_1,
+	        WF_26_1_1,
+            WF_27_0_0,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	}; 
 
@@ -127,7 +128,7 @@ public class ServerRuntimeUIConstants {
 			JBEAP_720, 
 			JBEAP_730, 
 			JBEAP_740,
-			JBEAP_800,
+//			JBEAP_800, // commented until release
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	};
 
@@ -136,8 +137,9 @@ public class ServerRuntimeUIConstants {
 
 	public static final String[] SMOKETEST_DOWNLOADS = new String[] {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-			JBEAP_800,
-			WF_26_1_1,
+//			JBEAP_800, // commented until release
+	        JBEAP_740,
+			WF_27_0_0,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	};
 
@@ -188,6 +190,7 @@ public class ServerRuntimeUIConstants {
 		addEntry(WF_24_0_0, 	"WildFly 24.0",			"24.0", "WildFly", 	"wildfly-24.0.0.Final",			STANDARD_DEPLOY, STANDARD_UNDEPLOY, wfEditorPorts());
 		addEntry(WF_25_0_1, 	"WildFly 25.0",			"25.0", "WildFly", 	"wildfly-25.0.1.Final",			STANDARD_DEPLOY, STANDARD_UNDEPLOY, wfEditorPorts());
 		addEntry(WF_26_1_1, 	"WildFly 26.1",			"26.1", "WildFly", 	"wildfly-26.1.1.Final",			STANDARD_DEPLOY, STANDARD_UNDEPLOY, wfEditorPorts());
+		addEntry(WF_27_0_0,     "WildFly 27.0",         "27.0", "WildFly",  "wildfly-preview-27.0.0.Final",         STANDARD_DEPLOY, STANDARD_UNDEPLOY, wfEditorPorts());
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		addEntry(JBEAP_610, 	"Red Hat JBoss EAP 6.1", "6.1",	"EAP", 		"jboss-eap-6.1", 				STANDARD_DEPLOY, STANDARD_UNDEPLOY, as7EditorPorts());
 		addEntry(JBEAP_620, 	"Red Hat JBoss EAP 6.2", "6.2",	"EAP", 		"jboss-eap-6.2", 				STANDARD_DEPLOY, STANDARD_UNDEPLOY, as7EditorPorts());
