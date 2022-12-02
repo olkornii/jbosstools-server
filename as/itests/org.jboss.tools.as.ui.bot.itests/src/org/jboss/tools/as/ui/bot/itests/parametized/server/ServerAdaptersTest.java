@@ -61,7 +61,7 @@ public class ServerAdaptersTest extends AbstractTest {
 	public static ArrayList<String> data() {
 		ArrayList<String> list = new ArrayList<String>();
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
-		list.add("WildFly 25");
+		list.add("WildFly 27");
 		list.add("WildFly 26");
 		// AUTOGEN_SERVER_ADAPTER_CHUNK
 		list.add("Red Hat JBoss Enterprise Application Platform 7.0");
