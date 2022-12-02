@@ -26,12 +26,12 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({ 
 //	InvalidCredentialProductDownloadTest.class,
 	ServerRuntimesTest.class,
-//	VariousProjectsArchiving.class,
-//	DeployingArchiveTest.class,
+	VariousProjectsArchiving.class,
+	DeployingArchiveTest.class,
 //	RuntimeDetectionDuplicatesTest.class,
 //	ServerAdaptersTest.class,
 //	ServerActualJavaTest.class,
-//	ShowInContextMenuTest.class
+	ShowInContextMenuTest.class
 })
 public class AllTestsSuite {
 
