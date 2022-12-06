@@ -13,6 +13,8 @@ import static org.junit.Assert.fail;
 
 import org.eclipse.reddeer.common.condition.AbstractWaitCondition;
 import org.eclipse.reddeer.common.exception.WaitTimeoutExpiredException;
+import org.eclipse.reddeer.common.wait.AbstractWait;
+import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
 import org.eclipse.reddeer.core.exception.CoreLayerException;
@@ -47,6 +49,9 @@ public class InvalidCredentialProductDownloadTest extends AbstractTest {
 	 */
 	@Test
 	public void useInvalidCredentials() {
+        System.out.println("useInvalidCredentials");
+        AbstractWait.sleep(TimePeriod.DEFAULT);
+
 		RuntimeDownloadTestUtility util = new RuntimeDownloadTestUtility();
 		util.invokeDownloadRuntimesWizard();
 

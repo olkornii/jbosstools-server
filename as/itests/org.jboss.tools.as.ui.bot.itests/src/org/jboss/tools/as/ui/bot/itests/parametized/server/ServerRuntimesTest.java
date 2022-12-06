@@ -20,6 +20,8 @@ import java.util.Collection;
 
 import org.eclipse.reddeer.common.matcher.VersionMatcher;
 import org.eclipse.reddeer.common.util.Display;
+import org.eclipse.reddeer.common.wait.AbstractWait;
+import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.direct.preferences.Preferences;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersView2;
 import org.eclipse.reddeer.junit.annotation.RequirementRestriction;
@@ -134,6 +136,9 @@ public class ServerRuntimesTest extends AbstractTest {
     
     @Test
     public void acquireAndDetect(){
+        System.out.println("acquireAndDetect");
+        AbstractWait.sleep(TimePeriod.DEFAULT);
+
         System.out.println(runtimeString);
         RuntimeDownloadTestUtility util = new RuntimeDownloadTestUtility(getDownloadPath());
     	if( dlType == SuiteConstants.FREE) {
@@ -145,6 +150,9 @@ public class ServerRuntimesTest extends AbstractTest {
     
     @Test
     public void detect(){
+        System.out.println("detect");
+        AbstractWait.sleep(TimePeriod.DEFAULT);
+
     	DetectRuntimeTemplate.detectRuntime(getDownloadPath().getAbsolutePath(), ServerRuntimeUIConstants.getRuntimesForDownloadable(runtimeString));
     	DetectRuntimeTemplate.removePath(getDownloadPath().getAbsolutePath());
     	
@@ -172,6 +180,9 @@ public class ServerRuntimesTest extends AbstractTest {
     
     @Test
     public void operate(){
+        System.out.println("operate");
+        AbstractWait.sleep(TimePeriod.DEFAULT);
+
     	DetectRuntimeTemplate.detectRuntime(getDownloadPath().getAbsolutePath(), ServerRuntimeUIConstants.getRuntimesForDownloadable(runtimeString));
     	DetectRuntimeTemplate.removePath(getDownloadPath().getAbsolutePath());
     	String serverName = ServerRuntimeUIConstants.getServerName(runtimeString);
@@ -186,6 +197,9 @@ public class ServerRuntimesTest extends AbstractTest {
 
     @Test
     public void operateDeploy(){
+        System.out.println("operateDeploy");
+        AbstractWait.sleep(TimePeriod.DEFAULT);
+
     	DetectRuntimeTemplate.detectRuntime(getDownloadPath().getAbsolutePath(), ServerRuntimeUIConstants.getRuntimesForDownloadable(runtimeString));
     	DetectRuntimeTemplate.removePath(getDownloadPath().getAbsolutePath());
     	String serverName = ServerRuntimeUIConstants.getServerName(runtimeString);
