@@ -105,7 +105,7 @@ public class ServerRuntimeUIConstants {
 	
 	public static final String[] LATEST_MAJORS_FREE_DOWNLOADS = new String[] {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-			WF_25_0_1,
+//			WF_25_0_1,
 			WF_26_1_1,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	};
@@ -113,7 +113,7 @@ public class ServerRuntimeUIConstants {
 	
 	public static final String[] FREE_DOWNLOADS = new String[] {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-			WF_25_0_1,
+//			WF_25_0_1,
 			WF_26_1_1,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	}; 
@@ -122,10 +122,10 @@ public class ServerRuntimeUIConstants {
 
 	public static final String[] ZERO_DOLLAR = new String[] {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-			JBEAP_700, 
-			JBEAP_710, 
-			JBEAP_720, 
-			JBEAP_730, 
+//			JBEAP_700, 
+//			JBEAP_710, 
+//			JBEAP_720, 
+//			JBEAP_730, 
 			JBEAP_740,
 			JBEAP_800,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
@@ -136,7 +136,7 @@ public class ServerRuntimeUIConstants {
 
 	public static final String[] SMOKETEST_DOWNLOADS = new String[] {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-			JBEAP_800,
+	        JBEAP_800,
 			WF_26_1_1,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	};

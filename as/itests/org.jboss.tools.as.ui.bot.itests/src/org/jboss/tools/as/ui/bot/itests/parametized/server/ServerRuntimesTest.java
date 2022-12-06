@@ -148,7 +148,7 @@ public class ServerRuntimesTest extends AbstractTest {
     	}
     }
     
-    @Test
+//    @Test
     public void detect(){
         System.out.println("detect");
         AbstractWait.sleep(TimePeriod.DEFAULT);
@@ -178,7 +178,7 @@ public class ServerRuntimesTest extends AbstractTest {
 
     
     
-    @Test
+//    @Test
     public void operate(){
         System.out.println("operate");
         AbstractWait.sleep(TimePeriod.DEFAULT);
@@ -195,7 +195,7 @@ public class ServerRuntimesTest extends AbstractTest {
     	}
     }
 
-    @Test
+//    @Test
     public void operateDeploy(){
         System.out.println("operateDeploy");
         AbstractWait.sleep(TimePeriod.DEFAULT);

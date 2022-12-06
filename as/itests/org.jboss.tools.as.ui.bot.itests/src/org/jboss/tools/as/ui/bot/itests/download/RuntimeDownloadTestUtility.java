@@ -19,6 +19,7 @@ import java.io.IOException;
 import org.eclipse.reddeer.common.condition.AbstractWaitCondition;
 import org.eclipse.reddeer.common.exception.WaitTimeoutExpiredException;
 import org.eclipse.reddeer.common.logging.Logger;
+import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
@@ -162,8 +163,12 @@ public final class RuntimeDownloadTestUtility extends RuntimeDetectionUtility {
 	}
 
 	public void processLicenceAgreement() {
+	    System.out.println("processLicenceAgreement");
+	    AbstractWait.sleep(TimePeriod.DEFAULT);
 		TaskWizardSecondPage licenceAgreementPage = new TaskWizardSecondPage(runtimeDownloadWizard);
+		AbstractWait.sleep(TimePeriod.DEFAULT);
 		licenceAgreementPage.acceptLicense(true);
+		AbstractWait.sleep(TimePeriod.DEFAULT);
 		runtimeDownloadWizard.next();
 	}
 
