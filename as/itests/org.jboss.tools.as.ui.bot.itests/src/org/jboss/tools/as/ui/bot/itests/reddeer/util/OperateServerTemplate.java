@@ -19,6 +19,7 @@ import org.eclipse.reddeer.common.condition.AbstractWaitCondition;
 import org.eclipse.reddeer.common.exception.WaitTimeoutExpiredException;
 import org.eclipse.reddeer.common.logging.Logger;
 import org.eclipse.reddeer.common.matcher.RegexMatcher;
+import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
@@ -199,6 +200,9 @@ public class OperateServerTemplate {
 
 		assertNoException("Stopping server");
 		assertServerState("Stopping server", state);
+		
+		System.out.println("STOPPED!");
+		AbstractWait.sleep(TimePeriod.LONG);
 	}
 
 	/**
