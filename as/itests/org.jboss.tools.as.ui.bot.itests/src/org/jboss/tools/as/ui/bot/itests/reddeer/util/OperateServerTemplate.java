@@ -69,7 +69,7 @@ public class OperateServerTemplate {
 		new WaitWhile(new JobIsRunning());
 		new WaitUntil(new ServerHasState("Stopped"));
 		System.out.println("Start new server");
-		AbstractWait.sleep(TimePeriod.VERY_LONG);
+		AbstractWait.sleep(TimePeriod.getCustom(1200));
 		LOGGER.step("Starting server");
 		startServer();
 		LOGGER.step("Restarting server");
