@@ -180,17 +180,20 @@ public class OperateServerTemplate {
 
 	public void stopServer() {
 		new WaitUntil(new JobIsRunning(),TimePeriod.LONG, false);
-		serversView.getServer(getServerName()).select();
 		try {
-			serversView.getServer(getServerName()).setServerStateChangeTimeout(TimePeriod.LONG);
-			serversView.getServer(getServerName()).stop();
+		    serversView.open();
+			serversView.getServer(getServerName()).select();
+			LOGGER.step("Click on stop button!");
+            new ContextMenuItem(new RegexMatcher("Stop.*")).select();
+            new WaitUntil(new JobIsRunning(),TimePeriod.LONG, false);
+            new WaitUntil(new ConsoleHasText("stopped in"), TimePeriod.getCustom(30));
 		} catch (WaitTimeoutExpiredException ex) {
 			//try to stop server once again
 			serversView.open();
-			serversView.getServer(getServerName()).setServerStateChangeTimeout(TimePeriod.LONG);
 			serversView.getServer(getServerName()).select();
+			LOGGER.step("Click on stop button!");
 			new ContextMenuItem(new RegexMatcher("Stop.*")).select();
-			new WaitUntil(new JobIsRunning(),TimePeriod.LONG);
+			new WaitUntil(new JobIsRunning(),TimePeriod.LONG, false);
 		}
 		tryServerProcessNotTerminated();
 		final String state = "Stopped";
