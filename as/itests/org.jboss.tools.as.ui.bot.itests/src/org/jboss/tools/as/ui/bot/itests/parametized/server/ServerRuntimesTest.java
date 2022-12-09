@@ -143,7 +143,7 @@ public class ServerRuntimesTest extends AbstractTest {
     	}
     }
     
-    @Test
+//    @Test
     public void detect(){
     	DetectRuntimeTemplate.detectRuntime(getDownloadPath().getAbsolutePath(), ServerRuntimeUIConstants.getRuntimesForDownloadable(runtimeString));
     	DetectRuntimeTemplate.removePath(getDownloadPath().getAbsolutePath());
@@ -184,7 +184,7 @@ public class ServerRuntimesTest extends AbstractTest {
     	}
     }
 
-    @Test
+//    @Test
     public void operateDeploy(){
     	DetectRuntimeTemplate.detectRuntime(getDownloadPath().getAbsolutePath(), ServerRuntimeUIConstants.getRuntimesForDownloadable(runtimeString));
     	DetectRuntimeTemplate.removePath(getDownloadPath().getAbsolutePath());
