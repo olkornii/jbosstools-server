@@ -32,7 +32,6 @@ import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersView2;
 import org.eclipse.reddeer.swt.api.Shell;
 import org.eclipse.reddeer.swt.condition.ShellIsAvailable;
 import org.eclipse.reddeer.swt.impl.button.PushButton;
-import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
 import org.eclipse.reddeer.swt.impl.shell.DefaultShell;
 import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
 import org.eclipse.reddeer.workbench.ui.dialogs.WorkbenchPreferenceDialog;
@@ -69,7 +68,7 @@ public class OperateServerTemplate {
 		LOGGER.step("Starting server");
 		startServer();
 		LOGGER.step("Restarting server");
-//		restartServer();
+		restartServer();
 		LOGGER.step("Stopping server");
 		stopServer();
 		LOGGER.step("Deleting server");
@@ -188,7 +187,6 @@ public class OperateServerTemplate {
 			//try to stop server once again
             serversView.open();
 		    actualServer.stop();
-			new WaitUntil(new JobIsRunning(),TimePeriod.LONG);
 		}
 		tryServerProcessNotTerminated();
 		final String state = "Stopped";
