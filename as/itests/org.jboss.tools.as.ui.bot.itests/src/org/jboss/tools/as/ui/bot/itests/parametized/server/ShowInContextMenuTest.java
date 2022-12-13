@@ -71,7 +71,7 @@ public class ShowInContextMenuTest {
 	public void selectServer() {
 		sv = new ServersView2();
 		sv.open();
-		server = sv.getServer("WildFly 24+ Server");
+		server = sv.getServer("WildFly 27 Server");
 		server.select();
 	}
 	
@@ -264,7 +264,7 @@ public class ShowInContextMenuTest {
 		}
 		
 		sv.open();
-		server = sv.getServer("WildFly 24+ Server");
+		server = sv.getServer("WildFly 27 Server");
 	}
 	
 	private void selectItem(String item) {
