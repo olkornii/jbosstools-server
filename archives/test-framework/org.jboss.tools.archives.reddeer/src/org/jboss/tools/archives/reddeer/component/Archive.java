@@ -123,7 +123,7 @@ public class Archive {
 	public ArchivePublishDialog editPublishSettings() {
 		archive.select();
 //		new ContextMenuItem("Edit publish settings...").select();
-		AbstractWait.sleep(TimePeriod.getCustom(30));
+		AbstractWait.sleep(TimePeriod.LONG);
 		return new ArchivePublishDialog();
 	}
 	
