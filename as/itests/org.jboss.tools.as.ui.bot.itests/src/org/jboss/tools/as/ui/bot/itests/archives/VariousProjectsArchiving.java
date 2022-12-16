@@ -16,8 +16,6 @@ import java.io.File;
 
 import org.jboss.ide.eclipse.archives.ui.test.bot.ArchivesTestBase;
 import org.eclipse.reddeer.common.matcher.VersionMatcher;
-import org.eclipse.reddeer.common.wait.AbstractWait;
-import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.eclipse.jst.ejb.ui.project.facet.EjbProjectFirstPage;
 import org.eclipse.reddeer.eclipse.jst.ejb.ui.project.facet.EjbProjectWizard;
 import org.eclipse.reddeer.eclipse.jst.servlet.ui.project.facet.WebProjectFirstPage;
@@ -69,7 +67,6 @@ public class VariousProjectsArchiving extends ArchivesTestBase {
 	    			ServerRuntimeUIConstants.getRuntimesForDownloadable(SMOKETEST_TYPE));
 	    	DetectRuntimeTemplate.removePath(f.getAbsolutePath());
 		}
-		AbstractWait.sleep(TimePeriod.LONG);
 	}
 
     @AfterClass

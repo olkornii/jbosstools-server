@@ -61,8 +61,8 @@ import org.junit.runner.RunWith;
 @RunWith(RedDeerSuite.class)
 @CloseAllEditors
 @UseInternalBrowser
-@JBossServer(state=ServerRequirementState.PRESENT)
 @JRE(cleanup=true, setDefault=true)
+@JBossServer(state=ServerRequirementState.PRESENT)
 public class ShowInContextMenuTest {
 	
 	private ServersView2 sv;
