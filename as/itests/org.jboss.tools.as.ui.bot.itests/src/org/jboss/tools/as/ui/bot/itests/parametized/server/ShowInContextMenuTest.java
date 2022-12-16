@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.eclipse.reddeer.common.matcher.VersionMatcher;
+import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
@@ -75,6 +76,7 @@ public class ShowInContextMenuTest {
 	@BeforeClass
 	public static void setup() {
 		Preferences.set("org.eclipse.debug.ui", "Console.limitConsoleOutput", "false");
+		AbstractWait.sleep(TimePeriod.LONG);
 	}
 	
 	@Before
