@@ -15,6 +15,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.eclipse.reddeer.common.matcher.VersionMatcher;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
@@ -24,9 +25,12 @@ import org.eclipse.reddeer.eclipse.debug.ui.views.launch.LaunchView;
 import org.eclipse.reddeer.eclipse.ui.console.ConsoleView;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.Server;
 import org.eclipse.reddeer.eclipse.wst.server.ui.cnf.ServersView2;
+import org.eclipse.reddeer.junit.annotation.RequirementRestriction;
+import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
 import org.eclipse.reddeer.requirements.browser.InternalBrowserRequirement.UseInternalBrowser;
 import org.eclipse.reddeer.requirements.closeeditors.CloseAllEditorsRequirement.CloseAllEditors;
+import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.requirements.server.ServerRequirementState;
 import org.eclipse.reddeer.swt.api.Browser;
 import org.eclipse.reddeer.swt.api.MenuItem;
@@ -57,10 +61,16 @@ import org.junit.runner.RunWith;
 @CloseAllEditors
 @UseInternalBrowser
 @JBossServer(state=ServerRequirementState.PRESENT)
+@JRE(cleanup=true, setDefault=true)
 public class ShowInContextMenuTest {
 	
 	private ServersView2 sv;
 	private Server server;
+	
+    @RequirementRestriction
+    public static RequirementMatcher getRestrictionMatcher() {
+      return new RequirementMatcher(JRE.class, "version", new VersionMatcher("11"));
+    }
 	
 	@BeforeClass
 	public static void setup() {
