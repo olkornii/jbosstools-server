@@ -137,8 +137,8 @@ public class ServerRuntimeUIConstants {
 
 	public static final String[] SMOKETEST_DOWNLOADS = new String[] {
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
-			JBEAP_800,
 			WF_27_0_0,
+	        JBEAP_800,
 			// AUTOGEN_SERVER_ADAPTER_CHUNK
 	};
 
