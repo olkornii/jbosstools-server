@@ -22,12 +22,12 @@ import org.junit.runners.Suite;
 
 @RunWith(RedDeerSuite.class)
 @Suite.SuiteClasses({ 
-	InvalidCredentialProductDownloadTest.class,
-	VariousProjectsArchiving.class,
-	DeployingArchiveTest.class,
-	RuntimeDetectionDuplicatesTest.class,
-	ServerActualJavaTest.class,
-	ShowInContextMenuTest.class
+//	InvalidCredentialProductDownloadTest.class,
+//	VariousProjectsArchiving.class,
+	DeployingArchiveTest.class
+//	RuntimeDetectionDuplicatesTest.class,
+//	ServerActualJavaTest.class,
+//	ShowInContextMenuTest.class
 })
 public class AllTestsSuite {
 

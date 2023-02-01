@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.jboss.tools.archives.reddeer.component;
 
+import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
@@ -121,6 +122,9 @@ public class Archive {
 
 	public ArchivePublishDialog editPublishSettings() {
 		archive.select();
+		System.out.println(new DefaultShell().getText());
+		System.out.println("First sleep");
+		AbstractWait.sleep(TimePeriod.LONG);
 		new ContextMenuItem("Edit publish settings...").select();
 		return new ArchivePublishDialog();
 	}
