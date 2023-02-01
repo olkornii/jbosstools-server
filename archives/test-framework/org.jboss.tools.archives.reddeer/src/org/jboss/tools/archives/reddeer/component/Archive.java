@@ -20,7 +20,10 @@ import org.eclipse.reddeer.swt.condition.ShellIsAvailable;
 import org.eclipse.reddeer.swt.condition.TreeContainsItem;
 import org.eclipse.reddeer.swt.impl.button.PushButton;
 import org.eclipse.reddeer.swt.impl.menu.ContextMenuItem;
+import org.eclipse.reddeer.swt.impl.menu.ShellMenuItem;
 import org.eclipse.reddeer.swt.impl.shell.DefaultShell;
+import org.eclipse.reddeer.swt.impl.table.DefaultTable;
+import org.eclipse.reddeer.swt.impl.text.DefaultText;
 import org.eclipse.reddeer.swt.impl.tree.DefaultTree;
 import org.eclipse.reddeer.swt.keyboard.KeyboardFactory;
 import org.eclipse.reddeer.workbench.core.condition.JobIsRunning;
@@ -124,8 +127,22 @@ public class Archive {
 		archive.select();
 		System.out.println(new DefaultShell().getText());
 		System.out.println("First sleep");
-		AbstractWait.sleep(TimePeriod.LONG);
-		new ContextMenuItem("Edit publish settings...").select();
+		AbstractWait.sleep(TimePeriod.getCustom(30));
+		
+        new ShellMenuItem("Window", "Navigation", "Find Actions").select();
+        
+        System.out.println("Find actions");
+        AbstractWait.sleep(TimePeriod.DEFAULT);
+        new DefaultText().setText("Show Context Menu");
+        
+        System.out.println("Show Context Menu");
+        AbstractWait.sleep(TimePeriod.DEFAULT);
+        new DefaultTable().getItem(0).click();
+
+        System.out.println("select");
+        AbstractWait.sleep(TimePeriod.LONG);
+        
+//		new ContextMenuItem("Edit publish settings...").select();
 		return new ArchivePublishDialog();
 	}
 	
