@@ -25,6 +25,7 @@ import org.eclipse.reddeer.junit.requirement.matcher.RequirementMatcher;
 import org.eclipse.reddeer.junit.runner.RedDeerSuite;
 import org.eclipse.reddeer.requirements.jre.JRERequirement.JRE;
 import org.eclipse.reddeer.swt.api.TreeItem;
+import org.eclipse.reddeer.swt.impl.shell.DefaultShell;
 import org.eclipse.reddeer.swt.impl.tree.DefaultTree;
 import org.jboss.ide.eclipse.archives.ui.test.bot.ArchivesTestBase;
 import org.jboss.tools.archives.reddeer.archives.ui.ArchivePublishDialog;
@@ -101,15 +102,17 @@ public class DeployingArchiveTest extends ArchivesTestBase {
     
 	@Test
 	public void testDeployingArchiveWithView() {
-//		view = viewForProject(projectName);
-//		Archive archive	= view.getProject(projectName).getArchive(PATH_ARCHIVE_1);
-//		ArchivePublishDialog dialog = archive.publishToServer(true);
-//		fillPublishDialog(dialog, false, false);
-//		assertArchiveIsDeployed(projectName + "/" + ARCHIVE_NAME_1);
-//		removeArchiveFromServer(projectName + "/" + ARCHIVE_NAME_1);
+		view = viewForProject(projectName);
+		Archive archive	= view.getProject(projectName).getArchive(PATH_ARCHIVE_1);
+		ArchivePublishDialog dialog = archive.publishToServer(true);
+		fillPublishDialog(dialog, false, false);
+		assertArchiveIsDeployed(projectName + "/" + ARCHIVE_NAME_1);
+		removeArchiveFromServer(projectName + "/" + ARCHIVE_NAME_1);
+		
+		new DefaultShell().setFocus();
 
 		view = viewForProject(projectName);
-		Archive archive = view.getProject(projectName).getArchive(PATH_ARCHIVE_1);
+		archive = view.getProject(projectName).getArchive(PATH_ARCHIVE_1);
 		fillPublishDialog(archive.editPublishSettings(), true, false);
 		archive.publishToServer(false);
 		assertArchiveIsDeployed(projectName + "/" + ARCHIVE_NAME_1);
