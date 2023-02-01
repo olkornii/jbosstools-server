@@ -114,6 +114,7 @@ public class Archive {
 	public ArchivePublishDialog publishToServer(boolean expectDialog) {
 		archive.select();
 		new ContextMenuItem("Publish To Server").select();
+		AbstractWait.sleep(TimePeriod.getCustom(30));
 		if( expectDialog ) {
 			// If this fails it will throw an exception
 			new WaitUntil(new ShellIsAvailable("Archive Publish Settings"), TimePeriod.LONG);
