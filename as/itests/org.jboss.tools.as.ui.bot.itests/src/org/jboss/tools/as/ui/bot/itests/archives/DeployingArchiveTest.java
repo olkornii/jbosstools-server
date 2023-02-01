@@ -29,6 +29,7 @@ import org.eclipse.reddeer.swt.impl.tree.DefaultTree;
 import org.jboss.ide.eclipse.archives.ui.test.bot.ArchivesTestBase;
 import org.jboss.tools.archives.reddeer.archives.ui.ArchivePublishDialog;
 import org.jboss.tools.archives.reddeer.archives.ui.ProjectArchivesExplorer;
+import org.jboss.tools.archives.reddeer.archives.ui.ProjectArchivesView;
 import org.jboss.tools.archives.reddeer.component.Archive;
 import org.jboss.tools.as.ui.bot.itests.Activator;
 import org.jboss.tools.as.ui.bot.itests.download.RuntimeDownloadTestUtility;
@@ -107,6 +108,7 @@ public class DeployingArchiveTest extends ArchivesTestBase {
 		assertArchiveIsDeployed(projectName + "/" + ARCHIVE_NAME_1);
 		removeArchiveFromServer(projectName + "/" + ARCHIVE_NAME_1);
 		view = viewForProject(projectName);
+		archive.select();
 		fillPublishDialog(archive.editPublishSettings(), true, false);
 		archive.publishToServer(false);
 		assertArchiveIsDeployed(projectName + "/" + ARCHIVE_NAME_1);

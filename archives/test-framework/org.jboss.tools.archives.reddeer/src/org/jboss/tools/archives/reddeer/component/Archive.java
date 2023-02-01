@@ -179,4 +179,8 @@ public class Archive {
 		new ProjectArchivesExplorer().activate();
 		archive.select();
 	}
+	
+	public void select() {
+	    archive.select();
+	}
 }
