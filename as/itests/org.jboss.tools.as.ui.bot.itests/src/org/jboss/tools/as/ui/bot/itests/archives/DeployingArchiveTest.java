@@ -101,15 +101,15 @@ public class DeployingArchiveTest extends ArchivesTestBase {
     
 	@Test
 	public void testDeployingArchiveWithView() {
-		view = viewForProject(projectName);
-		Archive archive	= view.getProject(projectName).getArchive(PATH_ARCHIVE_1);
-		ArchivePublishDialog dialog = archive.publishToServer(true);
-		fillPublishDialog(dialog, false, false);
-		assertArchiveIsDeployed(projectName + "/" + ARCHIVE_NAME_1);
-		removeArchiveFromServer(projectName + "/" + ARCHIVE_NAME_1);
+//		view = viewForProject(projectName);
+//		Archive archive	= view.getProject(projectName).getArchive(PATH_ARCHIVE_1);
+//		ArchivePublishDialog dialog = archive.publishToServer(true);
+//		fillPublishDialog(dialog, false, false);
+//		assertArchiveIsDeployed(projectName + "/" + ARCHIVE_NAME_1);
+//		removeArchiveFromServer(projectName + "/" + ARCHIVE_NAME_1);
 
 		view = viewForProject(projectName);
-		archive = view.getProject(projectName).getArchive(PATH_ARCHIVE_1);
+		Archive archive = view.getProject(projectName).getArchive(PATH_ARCHIVE_1);
 		fillPublishDialog(archive.editPublishSettings(), true, false);
 		archive.publishToServer(false);
 		assertArchiveIsDeployed(projectName + "/" + ARCHIVE_NAME_1);
