@@ -125,6 +125,8 @@ public class Archive {
 
 	public ArchivePublishDialog editPublishSettings() {
 		archive.select();
+		new DefaultShell().setFocus();
+		archive.select();
 //		System.out.println(new DefaultShell().getText());
 //		System.out.println("First sleep");
 //		AbstractWait.sleep(TimePeriod.getCustom(30));
