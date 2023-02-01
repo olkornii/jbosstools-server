@@ -125,24 +125,24 @@ public class Archive {
 
 	public ArchivePublishDialog editPublishSettings() {
 		archive.select();
-		System.out.println(new DefaultShell().getText());
-		System.out.println("First sleep");
-		AbstractWait.sleep(TimePeriod.getCustom(30));
-		
-        new ShellMenuItem("Window", "Navigation", "Find Actions").select();
+//		System.out.println(new DefaultShell().getText());
+//		System.out.println("First sleep");
+//		AbstractWait.sleep(TimePeriod.getCustom(30));
+//		
+//        new ShellMenuItem("Window", "Navigation", "Find Actions").select();
+//        
+//        System.out.println("Find actions");
+//        AbstractWait.sleep(TimePeriod.DEFAULT);
+//        new DefaultText().setText("Show Context Menu");
+//        
+//        System.out.println("Show Context Menu");
+//        AbstractWait.sleep(TimePeriod.DEFAULT);
+//        new DefaultTable().getItem(0).click();
+//
+//        System.out.println("select");
+//        AbstractWait.sleep(TimePeriod.LONG);
         
-        System.out.println("Find actions");
-        AbstractWait.sleep(TimePeriod.DEFAULT);
-        new DefaultText().setText("Show Context Menu");
-        
-        System.out.println("Show Context Menu");
-        AbstractWait.sleep(TimePeriod.DEFAULT);
-        new DefaultTable().getItem(0).click();
-
-        System.out.println("select");
-        AbstractWait.sleep(TimePeriod.LONG);
-        
-//		new ContextMenuItem("Edit publish settings...").select();
+		new ContextMenuItem("Edit publish settings...").select();
 		return new ArchivePublishDialog();
 	}
 	
