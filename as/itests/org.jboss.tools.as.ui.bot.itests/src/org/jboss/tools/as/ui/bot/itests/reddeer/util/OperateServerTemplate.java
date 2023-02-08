@@ -18,6 +18,7 @@ import static org.junit.Assert.fail;
 import org.eclipse.reddeer.common.condition.AbstractWaitCondition;
 import org.eclipse.reddeer.common.exception.WaitTimeoutExpiredException;
 import org.eclipse.reddeer.common.logging.Logger;
+import org.eclipse.reddeer.common.wait.AbstractWait;
 import org.eclipse.reddeer.common.wait.TimePeriod;
 import org.eclipse.reddeer.common.wait.WaitUntil;
 import org.eclipse.reddeer.common.wait.WaitWhile;
@@ -68,10 +69,13 @@ public class OperateServerTemplate {
 		LOGGER.step("Starting server");
 		startServer();
 		LOGGER.step("Restarting server");
+		AbstractWait.sleep(TimePeriod.DEFAULT);
 		restartServer();
 		LOGGER.step("Stopping server");
+		AbstractWait.sleep(TimePeriod.DEFAULT);
 		stopServer();
 		LOGGER.step("Deleting server");
+		AbstractWait.sleep(TimePeriod.VERY_LONG);
 		deleteServer();
 	}
 	
